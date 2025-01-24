@@ -57,11 +57,11 @@ public class playermovement : MonoBehaviour
     }
     void jump()
     {
-        rb.linearVelocity = Vector2.up * jumpforce;
+        rb.velocity = Vector2.up * jumpforce;
     }
     void daublejump()
     {
-        rb.linearVelocity = Vector2.up * djumpforce;
+        rb.velocity = Vector2.up * djumpforce;
     }
     void groundcheckf()
     {
@@ -70,18 +70,18 @@ public class playermovement : MonoBehaviour
     void movement()
     {
         Yspeed =  Input.GetAxis("Horizontal");
-        rb.linearVelocity = new Vector2(Yspeed * speed , rb.linearVelocity.y);
+        rb.velocity = new Vector2(Yspeed * speed , rb.velocity.y);
       
     }
 
     void flipsr()
     {
-        if (rb.linearVelocity.x  < -0.1f)
+        if (rb.velocity.x  < -0.1f)
         {
             sr.flipX = true;
             
         }
-        else if (rb.linearVelocity.x > 0.1f)
+        else if (rb.velocity.x > 0.1f)
         {
             sr.flipX = false;
         }
