@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RealmShift : MonoBehaviour
 {
-    public Sprite normalSprite;      // The sprite for the normal state
+    public Sprite normalSprite;      
     public Sprite realmShiftSprite;  // The sprite for the realm shift state
     private SpriteRenderer spriteRenderer;
     private bool isRealmShifted = false;

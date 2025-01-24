@@ -14,10 +14,10 @@ public class PlayerMovement : MonoBehaviour
      float dashingTime = 0.2f;
      float dashingCooldown = 1f;
 
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private TrailRenderer tr;
+    public Rigidbody2D rb;
+    public Transform groundCheck;
+    public LayerMask groundLayer;
+    public TrailRenderer tr;
 
     private void Update()
     {

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4283069981701414709}
   - component: {fileID: 4283069981701414710}
   - component: {fileID: 2982484156907397500}
+  - component: {fileID: 3343078668550181849}
+  - component: {fileID: 7390789321696552284}
   m_Layer: 3
   m_Name: puzzle block
   m_TagString: Untagged
@@ -130,3 +132,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.95, y: 6.46}
   m_EdgeRadius: 0
+--- !u!114 &3343078668550181849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4283069981701414704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c73efba3cacb0540bd2dfeee8fce327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalSprite: {fileID: 21300000, guid: adb0b8565bc1f684f80da9d376d566bc, type: 3}
+  realmShiftSprite: {fileID: 21300000, guid: ae57ddebbb600584fbe54a8bdb0e0076, type: 3}
+--- !u!114 &7390789321696552284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4283069981701414704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bcd2b0612c4f784796820ba777a554a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
