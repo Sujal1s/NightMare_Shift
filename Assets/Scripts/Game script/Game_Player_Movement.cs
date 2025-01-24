@@ -1,161 +1,90 @@
-using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class playermovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-  
-    // floats
-    public float speed;
-    private float Yspeed;
-    public float jumpforce;
-    public float djumpforce;
-    
-    //dash
+    private float horizontal;
+    private float speed = 8f;
+    private float jumpingPower = 16f;
+    private bool isFacingRight = true;
 
-    public float dashV ;
-    public float dashtime ;
-    
-    // vector2 
-    private Vector2 dashDir;
-    
-    // compoants
-    
-    Rigidbody2D rb;
-    SpriteRenderer sr;
-    TrailRenderer tr;
-    
-    //layes
-    
-    public LayerMask groundlayer;
-    
-    //bools
-    
-    bool isground; 
-    bool djump; 
-    bool isdash;
-    bool candash = true;
-    
-    //Transform
-    public Transform groundcheck;
+     bool canDash = true;
+     bool isDashing;
+     float dashingPower = 24f;
+     float dashingTime = 0.2f;
+     float dashingCooldown = 1f;
 
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
-        tr = GetComponent<TrailRenderer>();
-    }
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private TrailRenderer tr;
 
     private void Update()
     {
-        jumpmechanic();
-      
-    }
-
-    void FixedUpdate()
-    {
-        movement();
-        flipsr();
-        groundcheckf();
-        dashmechanic();
-    }
-
-    void movement()
-    
-    {
-        Yspeed =  Input.GetAxis("Horizontal");
-        rb.linearVelocity = new Vector2(Yspeed * speed , rb.linearVelocity.y);
-      
-    }
-
-    void jumpmechanic()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (isDashing)
         {
-            if (isground)
-            {
-                jump();
-                djump = true;
-            }
-            else if (djump)
-
-            {
-                daublejump();
-                djump = false;
-            }
-             
-        }
-    }
-
-    void jump()
-    {
-        rb.linearVelocity = Vector2.up * jumpforce;
-    }
-
-    void daublejump()
-    {
-        rb.linearVelocity = Vector2.up * djumpforce;
-    }
-
-    void groundcheckf()
-    {
-        isground = Physics2D.OverlapCircle(groundcheck.position, 0.2f, groundlayer);
-    }
-
-    void flipsr()
-    {
-        if (rb.linearVelocity.x  < -0.1f)
-        {
-            sr.flipX = true;
-            
-        }
-        else if (rb.linearVelocity.x > 0.1f)
-        {
-            sr.flipX = false;
-        }
-    }
-
-    void dashmechanic()
-    {
-        var dashinput = Input.GetKeyDown(KeyCode.LeftShift);
-
-        if (dashinput && candash)
-        {
-            isdash = true;
-            candash = false;
-            tr.emitting = true; 
-
-            dashDir = new Vector2(Yspeed , Input.GetAxisRaw("Vertical"));
-            if (dashDir == Vector2.zero)
-            {
-                dashDir = new Vector2(transform.localScale.x, 0);
-            }
-
-            StartCoroutine(stopdashing());
-            
-
-        }
-        // animator.setbool("isdash" , isdash);
-
-        if (isdash)
-        {
-            rb.linearVelocity = dashDir.normalized * dashV;
             return;
         }
 
-        if (isground)
+        horizontal = Input.GetAxisRaw("Horizontal");
+
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            candash = true;
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+        }
+
+        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        {
+            StartCoroutine(Dash());
+        }
+
+        Flip();
+    }
+
+    private void FixedUpdate()
+    {
+        if (isDashing)
+        {
+            return;
+        }
+
+        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+    }
+
+    private bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+    }
+
+    private void Flip()
+    {
+        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        {
+            Vector3 localScale = transform.localScale;
+            isFacingRight = !isFacingRight;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
         }
     }
 
-    private IEnumerator stopdashing()
+    private IEnumerator Dash()
     {
-        yield return new WaitForSeconds(dashtime);
+        canDash = false;
+        isDashing = true;
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+        rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        tr.emitting = true;
+        yield return new WaitForSeconds(dashingTime);
         tr.emitting = false;
-        isdash = false;
-        
+        rb.gravityScale = originalGravity;
+        isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
     }
-    
 }
