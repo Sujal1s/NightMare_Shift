@@ -35,7 +35,7 @@ Transform:
   m_Children:
   - {fileID: 2048808530966894051}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2048808529623053641
 SpriteRenderer:
@@ -102,14 +102,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpForce: 6
-  doubleJumpForce: 6
-  dashVelocity: 10
-  dashTime: 0
+  Jump: 0
+  Djump: 0
+  dashingPower: 6
+  dashingTime: 0.2
+  dashingCooldown: 0.5
+  rb: {fileID: 2048808529623053653}
+  groundcheck: {fileID: 2048808530966894051}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  groundCheck: {fileID: 2048808530966894051}
+  tr: {fileID: 2048808529623053655}
 --- !u!96 &2048808529623053655
 TrailRenderer:
   serializedVersion: 3

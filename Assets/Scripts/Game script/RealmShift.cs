@@ -3,7 +3,7 @@ using UnityEngine;
 public class RealmShift : MonoBehaviour
 {
     public Sprite normalSprite;      
-    public Sprite realmShiftSprite;  // The sprite for the realm shift state
+    public Sprite realmShiftSprite;  
     private SpriteRenderer spriteRenderer;
     private bool isRealmShifted = false;
 
@@ -18,7 +18,7 @@ public class RealmShift : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))  // Press 'R' to trigger realm shift
+        if (Input.GetKeyDown(KeyCode.R)) 
         {
             ToggleRealmShift();
         }

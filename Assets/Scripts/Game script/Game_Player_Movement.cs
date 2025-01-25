@@ -4,19 +4,24 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
-    private float speed = 8f;
-    private float jumpingPower = 16f;
-    private bool isFacingRight = true;
+    public float speed;
+    public float Jump;
+    public float Djump;
+    public float dashingPower;
+    public float dashingTime;
+    public float dashingCooldown;
 
-     bool canDash = true;
-     bool isDashing;
-     float dashingPower = 24f;
-     float dashingTime = 0.2f;
-     float dashingCooldown = 1f;
+    bool isjump;
+    bool canDash = true;
+    bool isDashing;
+    private bool isFacingRight = true;
+    bool isground;
 
     public Rigidbody2D rb;
-    public Transform groundCheck;
+    public Transform groundcheck;
+
     public LayerMask groundLayer;
+
     public TrailRenderer tr;
 
     private void Update()
@@ -28,15 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-        }
-
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-        }
+        
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
@@ -44,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Flip();
+        jumpbutton();
+        groundcheckf();
     }
 
     private void FixedUpdate()
@@ -56,10 +55,39 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
     }
 
-    private bool IsGrounded()
+    void jumpbutton()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (isground)
+            {
+                jump();
+                isjump = true;
+            }
+            else if (isjump)
+            {
+                daublejump();
+                isjump = false;
+            }
+             
+        }
     }
+
+    void jump()
+    {
+        rb.velocity = Vector2.up * Jump;
+    }
+
+    void daublejump()
+    {
+        rb.velocity = Vector2.up * Djump;
+    }
+
+    void groundcheckf()
+    {
+        isground = Physics2D.OverlapCircle(groundcheck.position, 0.2f, groundLayer);
+    }
+
 
     private void Flip()
     {
