@@ -1,40 +1,58 @@
-using System;
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 
-public class playermovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-  
+    private float horizontal;
     public float speed;
-    private float Yspeed;
-    public float jumpforce;
-    public float djumpforce;
+    public float Jump;
+    public float Djump;
+    public float dashingPower;
+    public float dashingTime;
+    public float dashingCooldown;
 
-    Rigidbody2D rb;
-    SpriteRenderer sr;
-    public LayerMask groundlayer;
-    bool isground; 
-    bool djump;
+    bool isjump;
+    bool canDash = true;
+    bool isDashing;
+    private bool isFacingRight = true;
+    bool isground;
+
+    public Rigidbody2D rb;
     public Transform groundcheck;
 
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
-       
-    }
+    public LayerMask groundLayer;
+
+    public TrailRenderer tr;
 
     private void Update()
     {
+        if (isDashing)
+        {
+            return;
+        }
+
+        horizontal = Input.GetAxisRaw("Horizontal");
+
+        
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        {
+            StartCoroutine(Dash());
+        }
+
+        Flip();
         jumpbutton();
-      
+        groundcheckf();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        movement();
-        flipsr();
-        groundcheckf();
+        if (isDashing)
+        {
+            return;
+        }
+
+        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
     }
 
     void jumpbutton()
@@ -44,46 +62,65 @@ public class playermovement : MonoBehaviour
             if (isground)
             {
                 jump();
-                djump = true;
+                isjump = true;
             }
-            else if (djump)
-
+            else if (isjump)
             {
                 daublejump();
-                djump = false;
+                isjump = false;
             }
              
         }
     }
+
     void jump()
     {
-        rb.velocity = Vector2.up * jumpforce;
-    }
-    void daublejump()
-    {
-        rb.velocity = Vector2.up * djumpforce;
-    }
-    void groundcheckf()
-    {
-        isground = Physics2D.OverlapCircle(groundcheck.position, 0.2f, groundlayer);
-    }
-    void movement()
-    {
-        Yspeed =  Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(Yspeed * speed , rb.velocity.y);
-      
+
+        rb.velocity = Vector2.up * Jump;
+
     }
 
-    void flipsr()
+    void daublejump()
     {
-        if (rb.velocity.x  < -0.1f)
+
+        rb.velocity = Vector2.up * Djump;
+
+    }
+
+    void groundcheckf()
+    {
+
+        isground = Physics2D.OverlapCircle(groundcheck.position, 0.2f, groundLayer);
+
+    }
+
+
+    private void Flip()
+    {
+
+        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+
         {
-            sr.flipX = true;
-            
+            Vector3 localScale = transform.localScale;
+            isFacingRight = !isFacingRight;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
         }
-        else if (rb.velocity.x > 0.1f)
-        {
-            sr.flipX = false;
-        }
+    }
+
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+        rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        tr.emitting = true;
+        yield return new WaitForSeconds(dashingTime);
+        tr.emitting = false;
+        rb.gravityScale = originalGravity;
+        isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
     }
 }
