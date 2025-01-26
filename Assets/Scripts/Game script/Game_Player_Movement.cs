@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
+    private float vertical;
     public float speed;
     public float Jump;
     public float Djump;
@@ -32,8 +33,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         horizontal = Input.GetAxisRaw("Horizontal");
-
-        
+        vertical = Input.GetAxisRaw("Vertical");
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
@@ -69,7 +69,6 @@ public class PlayerMovement : MonoBehaviour
                 daublejump();
                 isjump = false;
             }
-             
         }
     }
 
@@ -88,7 +87,6 @@ public class PlayerMovement : MonoBehaviour
         isground = Physics2D.OverlapCircle(groundcheck.position, 0.2f, groundLayer);
     }
 
-
     private void Flip()
     {
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
@@ -106,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
         isDashing = true;
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
-        rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        rb.velocity = new Vector2(horizontal * dashingPower, vertical * dashingPower);
         tr.emitting = true;
         yield return new WaitForSeconds(dashingTime);
         tr.emitting = false;
