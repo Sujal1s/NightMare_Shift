@@ -4,8 +4,9 @@ public class RealmShift : MonoBehaviour
 {
     public Sprite normalSprite;      
     public Sprite realmShiftSprite;  
-    private SpriteRenderer spriteRenderer;
-    private bool isRealmShifted = false;
+    private SpriteRenderer spriteRenderer; 
+    public static  bool isRealmShifted = false;
+    
 
     void Start()
     {

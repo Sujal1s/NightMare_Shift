@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -12,11 +13,15 @@ public class PlayerMovement : MonoBehaviour
     public float dashingTime;
     public float dashingCooldown;
 
+
+
+
     bool isjump;
     bool canDash = true;
     bool isDashing;
     private bool isFacingRight = true;
     bool isground;
+    
 
     public Rigidbody2D rb;
     public Transform groundcheck;
@@ -25,8 +30,15 @@ public class PlayerMovement : MonoBehaviour
 
     public TrailRenderer tr;
 
+
+
     private void Update()
     {
+       
+
+        Flip();
+        jumpbutton();
+        groundcheckf();
         if (isDashing)
         {
             return;
@@ -35,14 +47,10 @@ public class PlayerMovement : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash  && RealmShift.isRealmShifted  )
         {
             StartCoroutine(Dash());
         }
-
-        Flip();
-        jumpbutton();
-        groundcheckf();
     }
 
     private void FixedUpdate()
@@ -52,10 +60,15 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        rb.velocity = new Vector2(horizontal * speed , rb.velocity.y );
+       
     }
+    
+    
 
-    void jumpbutton()
+  
+
+void jumpbutton()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -64,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
                 jump();
                 isjump = true;
             }
-            else if (isjump)
+            else if (isjump && RealmShift.isRealmShifted)
             {
                 daublejump();
                 isjump = false;
