@@ -12,33 +12,26 @@ public class PlayerMovement : MonoBehaviour
     public float dashingPower;
     public float dashingTime;
     public float dashingCooldown;
-
-
-
-
+    
     bool isjump;
     bool canDash = true;
     bool isDashing;
     private bool isFacingRight = true;
     bool isground;
     
-
     public Rigidbody2D rb;
     public Transform groundcheck;
-
     public LayerMask groundLayer;
-
     public TrailRenderer tr;
-
-
+    
+    public RealmShift realmShift;
 
     private void Update()
     {
-       
-
         Flip();
         jumpbutton();
         groundcheckf();
+
         if (isDashing)
         {
             return;
@@ -47,7 +40,8 @@ public class PlayerMovement : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash  && RealmShift.isRealmShifted  )
+        // Allow dash only if realm is shifted
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && CanUseAbilities())
         {
             StartCoroutine(Dash());
         }
@@ -59,16 +53,10 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-
-        rb.velocity = new Vector2(horizontal * speed , rb.velocity.y );
-       
+        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
     }
     
-    
-
-  
-
-void jumpbutton()
+    void jumpbutton()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -77,10 +65,14 @@ void jumpbutton()
                 jump();
                 isjump = true;
             }
-            else if (isjump && RealmShift.isRealmShifted)
+            else
             {
-                daublejump();
-                isjump = false;
+                // Only allow double jump if realm is shifted
+                if (CanUseAbilities())
+                {
+                    daublejump();
+                    isjump = false;
+                }
             }
         }
     }
@@ -102,7 +94,7 @@ void jumpbutton()
 
     private void Flip()
     {
-        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        if ((isFacingRight && horizontal < 0f) || (!isFacingRight && horizontal > 0f))
         {
             Vector3 localScale = transform.localScale;
             isFacingRight = !isFacingRight;
@@ -125,5 +117,11 @@ void jumpbutton()
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+    }
+
+    private bool CanUseAbilities()
+    {
+        // Make sure the realmShift reference is assigned and the player is in the realm shifted state
+        return realmShift != null && realmShift.isRealmShifted;
     }
 }
