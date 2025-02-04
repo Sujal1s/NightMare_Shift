@@ -40,7 +40,6 @@ public class PlayerMovement : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
-        // Allow dash only if realm is shifted
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && CanUseAbilities())
         {
             StartCoroutine(Dash());
