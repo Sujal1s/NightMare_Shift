@@ -76,16 +76,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void jump()
-    {
-        rb.velocity = Vector2.up * Jump;
-    }
-
-    void daublejump()
-    {
-        rb.velocity = Vector2.up * Djump;
-    }
-
     void groundcheckf()
     {
         isground = Physics2D.OverlapCircle(groundcheck.position, 0.2f, groundLayer);
@@ -100,6 +90,16 @@ public class PlayerMovement : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
+    }
+
+    void jump()
+    {
+        rb.velocity = Vector2.up * Jump;
+    }
+
+    void daublejump()
+    {
+        rb.velocity = Vector2.up * Djump;
     }
 
     private IEnumerator Dash()
