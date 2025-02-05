@@ -2478,6 +2478,10 @@ PrefabInstance:
       propertyPath: jumpingPower
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2048808529623053640, guid: 74c2ff33b8eeb0f40adde105043eb7bb, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2048808529623053641, guid: 74c2ff33b8eeb0f40adde105043eb7bb, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2618,6 +2622,10 @@ PrefabInstance:
       propertyPath: realmShift
       value: 
       objectReference: {fileID: 1697898656}
+    - target: {fileID: 2640378619190525535, guid: 74c2ff33b8eeb0f40adde105043eb7bb, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5603568262327414707, guid: 74c2ff33b8eeb0f40adde105043eb7bb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.05
