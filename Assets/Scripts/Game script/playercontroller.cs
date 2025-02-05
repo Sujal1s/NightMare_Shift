@@ -11,16 +11,18 @@ public class PlayerController : MonoBehaviour
     public float dashingPower;
     public float dashingTime;
     public float dashingCooldown;
+   
+    private Vector2 moveInput;
+    private bool ismoving; // Flag indicating whether the player is moving
     private bool canDash = true;
     private bool isDashing;
-
-    private Vector2 moveInput;
-
     private bool isjump;
     public bool isground { get; private set; }
     private bool isFacingRight = true;
     
     private Rigidbody2D rb;
+    private Animator animator; // Reference to the Animator component
+    
     public Transform groundcheck;
     public LayerMask groundLayer;
     public TrailRenderer tr;  
@@ -29,12 +31,14 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>(); // Gets the Animator component attached to this GameObject
     }
 
     private void Update()
     {
         GroundCheck();
         Flip();
+        UpdateAnimation();
     }
 
     private void FixedUpdate()
@@ -45,19 +49,25 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(moveInput.x * speed, rb.velocity.y);
     }
 
-  
+    // Update the animator's "isMoving" parameter
+    private void UpdateAnimation()
+    {
+        if(animator != null)
+        {
+            animator.SetBool("_ismoving", ismoving);
+        }
+    }
+    
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+        ismoving = moveInput != Vector2.zero;
     }
-
     
     public void OnJump(InputAction.CallbackContext context)
     {
-        
         if (context.started)
         {
-           
             if (isground)
             {
                 JumpAction();
@@ -65,7 +75,6 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-               
                 if (CanUseAbilities() && isjump)
                 {
                     DoubleJumpAction();
@@ -74,7 +83,6 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
     
     public void OnSprint(InputAction.CallbackContext context)
     {
@@ -94,12 +102,10 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, Djump);
     }
 
-  
     private void GroundCheck()
     {
         isground = Physics2D.OverlapCircle(groundcheck.position, 0.2f, groundLayer);
     }
-
    
     private void Flip()
     {
@@ -112,14 +118,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
- 
     private IEnumerator Dash()
     {
         canDash = false;
         isDashing = true;
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
-        
         
         Vector2 dashDirection = moveInput;
         if(dashDirection == Vector2.zero)
@@ -138,7 +142,6 @@ public class PlayerController : MonoBehaviour
         canDash = true;
     }
 
-    
     private bool CanUseAbilities()
     {
         return realmShift != null && realmShift.isRealmShifted;
