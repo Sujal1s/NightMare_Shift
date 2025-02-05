@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.InputSystem; 
 public class RealmShift : MonoBehaviour
 {
     public Sprite normalSprite;      
@@ -23,6 +23,9 @@ public class RealmShift : MonoBehaviour
             ToggleRealmShift();
         }
     }
+
+  
+
 
     void ToggleRealmShift()
     {
