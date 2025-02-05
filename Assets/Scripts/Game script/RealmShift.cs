@@ -1,12 +1,12 @@
 using UnityEngine;
-
+using UnityEngine.InputSystem; 
 public class RealmShift : MonoBehaviour
 {
     public Sprite normalSprite;      
     public Sprite realmShiftSprite;  
-    private SpriteRenderer spriteRenderer;
-    private bool isRealmShifted = false;
-
+    private SpriteRenderer spriteRenderer; 
+    public bool isRealmShifted = false;
+    
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -18,11 +18,14 @@ public class RealmShift : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R)) 
+        if (Input.GetKeyDown(KeyCode.R)|| Input.GetKeyDown(KeyCode.JoystickButton5)) 
         {
             ToggleRealmShift();
         }
     }
+
+  
+
 
     void ToggleRealmShift()
     {

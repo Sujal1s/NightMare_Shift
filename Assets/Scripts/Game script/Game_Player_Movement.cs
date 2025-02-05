@@ -1,48 +1,49 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
+    private float vertical;
     public float speed;
     public float Jump;
     public float Djump;
     public float dashingPower;
     public float dashingTime;
     public float dashingCooldown;
-
+    
     bool isjump;
     bool canDash = true;
     bool isDashing;
     private bool isFacingRight = true;
     bool isground;
-
+    
     public Rigidbody2D rb;
     public Transform groundcheck;
-
     public LayerMask groundLayer;
-
     public TrailRenderer tr;
+    
+    public RealmShift realmShift;
 
     private void Update()
     {
+        Flip();
+        jumpbutton();
+        groundcheckf();
+
         if (isDashing)
         {
             return;
         }
 
         horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
 
-        
-
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && CanUseAbilities())
         {
             StartCoroutine(Dash());
         }
-
-        Flip();
-        jumpbutton();
-        groundcheckf();
     }
 
     private void FixedUpdate()
@@ -51,10 +52,9 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
     }
-
+    
     void jumpbutton()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -64,28 +64,18 @@ public class PlayerMovement : MonoBehaviour
                 jump();
                 isjump = true;
             }
-            else if (isjump)
+            else
             {
-                daublejump();
-                isjump = false;
+                // Only allow double jump if realm is shifted
+                if (CanUseAbilities())
+                {
+                    daublejump();
+                    isjump = false;
+                }
             }
-             
         }
     }
 
-    void jump()
-    {
-
-        rb.velocity = Vector2.up * Jump;
-
-    }
-
-    void daublejump()
-    {
-
-        rb.velocity = Vector2.up * Djump;
-
-    }
 
     void groundcheckf()
     {
@@ -94,11 +84,10 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-
     private void Flip()
     {
 
-        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        if ((isFacingRight && horizontal < 0f) || (!isFacingRight && horizontal > 0f))
 
         {
             Vector3 localScale = transform.localScale;
@@ -108,13 +97,23 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void jump()
+    {
+        rb.velocity = Vector2.up * Jump;
+    }
+
+    void daublejump()
+    {
+        rb.velocity = Vector2.up * Djump;
+    }
+
     private IEnumerator Dash()
     {
         canDash = false;
         isDashing = true;
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
-        rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        rb.velocity = new Vector2(horizontal * dashingPower, vertical * dashingPower);
         tr.emitting = true;
         yield return new WaitForSeconds(dashingTime);
         tr.emitting = false;
@@ -122,5 +121,11 @@ public class PlayerMovement : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+    }
+
+    private bool CanUseAbilities()
+    {
+        // Make sure the realmShift reference is assigned and the player is in the realm shifted state
+        return realmShift != null && realmShift.isRealmShifted;
     }
 }
