@@ -10,9 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         targetPlatform:
-        
           - StandaloneWindows64 # Build a Windows 64-bit standalone.
-          
           
     steps:
       - uses: actions/checkout@v4
@@ -33,7 +31,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: Build-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
