@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
         if (animator != null)
         {
             animator.SetBool("_ismoving", ismoving);
-            animator.SetBool("_isjump", !isground);
+           
         }
     }
 
@@ -73,18 +73,19 @@ public class PlayerController : MonoBehaviour
         {
             if (isground)
             {
-                JumpAction();
+                jump();
                 isjump = true;
-                animator.SetBool("_isjump", true);
             }
             else
             {
-                if (CanUseAbilities() && isjump)
+                // Only allow double jump if realm is shifted
+                if (CanUseAbilities())
                 {
-                    DoubleJumpAction();
+                    daublejump();
                     isjump = false;
                 }
             }
+           
         }
     }
 
@@ -96,12 +97,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void JumpAction()
+    private void jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, Jump);
     }
 
-    private void DoubleJumpAction()
+    private void daublejump()
     {
         rb.velocity = new Vector2(rb.velocity.x, Djump);
     }
@@ -109,11 +110,7 @@ public class PlayerController : MonoBehaviour
     private void GroundCheck()
     {
         isground = Physics2D.OverlapCircle(groundcheck.position, 0.2f, groundLayer);
-        if (isground)
-        {
-            isjump = false;
-            animator.SetBool("_isjump", false);
-        }
+     
     }
 
     private void Flip()
