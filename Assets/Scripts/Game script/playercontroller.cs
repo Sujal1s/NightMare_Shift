@@ -1,32 +1,34 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem; 
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     public float speed;
     public float Jump;
     public float Djump;
-    
+
     public float dashingPower;
     public float dashingTime;
     public float dashingCooldown;
-   
+
     private Vector2 moveInput;
+    private Vector2 jumpInput;
+
     private bool ismoving; // Flag indicating whether the player is moving
     private bool canDash = true;
     private bool isDashing;
     private bool isjump;
     public bool isground { get; private set; }
     private bool isFacingRight = true;
-    
+
     private Rigidbody2D rb;
     private Animator animator; // Reference to the Animator component
-    
+
     public Transform groundcheck;
     public LayerMask groundLayer;
-    public TrailRenderer tr;  
-    public RealmShift realmShift;  
+    public TrailRenderer tr;
+    public RealmShift realmShift;
 
     private void Awake()
     {
@@ -45,45 +47,48 @@ public class PlayerController : MonoBehaviour
     {
         if (isDashing)
             return;
-        
+
         rb.velocity = new Vector2(moveInput.x * speed, rb.velocity.y);
     }
 
-    // Update the animator's "isMoving" parameter
+    // Update the animator's "isMoving" and "isJumping" parameters
     private void UpdateAnimation()
     {
-        if(animator != null)
+        if (animator != null)
         {
             animator.SetBool("_ismoving", ismoving);
+           
         }
     }
-    
+
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
         ismoving = moveInput != Vector2.zero;
     }
-    
+
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.started)
         {
             if (isground)
             {
-                JumpAction();
-                isjump = true; 
+                jump();
+                isjump = true;
             }
             else
             {
-                if (CanUseAbilities() && isjump)
+                // Only allow double jump if realm is shifted
+                if (CanUseAbilities())
                 {
-                    DoubleJumpAction();
-                    isjump = false; 
+                    daublejump();
+                    isjump = false;
                 }
             }
+           
         }
     }
-    
+
     public void OnSprint(InputAction.CallbackContext context)
     {
         if (context.started && canDash && CanUseAbilities())
@@ -92,12 +97,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void JumpAction()
+    private void jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, Jump);
     }
 
-    private void DoubleJumpAction()
+    private void daublejump()
     {
         rb.velocity = new Vector2(rb.velocity.x, Djump);
     }
@@ -105,8 +110,9 @@ public class PlayerController : MonoBehaviour
     private void GroundCheck()
     {
         isground = Physics2D.OverlapCircle(groundcheck.position, 0.2f, groundLayer);
+     
     }
-   
+
     private void Flip()
     {
         if ((isFacingRight && moveInput.x < 0f) || (!isFacingRight && moveInput.x > 0f))
@@ -117,33 +123,33 @@ public class PlayerController : MonoBehaviour
             transform.localScale = localScale;
         }
     }
-
-    private IEnumerator Dash()
-    {
-        canDash = false;
-        isDashing = true;
-        float originalGravity = rb.gravityScale;
-        rb.gravityScale = 0f;
         
-        Vector2 dashDirection = moveInput;
-        if(dashDirection == Vector2.zero)
-            dashDirection = Vector2.right * (isFacingRight ? 1 : -1);
-            
-        rb.velocity = dashDirection.normalized * dashingPower;
-        tr.emitting = true;
-
-        yield return new WaitForSeconds(dashingTime);
-
-        tr.emitting = false;
-        rb.gravityScale = originalGravity;
-        isDashing = false;
+            private IEnumerator Dash()
+            {
+                canDash = false;
+                isDashing = true;
+                float originalGravity = rb.gravityScale;
+                rb.gravityScale = 0f;
         
-        yield return new WaitForSeconds(dashingCooldown);
-        canDash = true;
-    }
-
-    private bool CanUseAbilities()
-    {
-        return realmShift != null && realmShift.isRealmShifted;
-    }
-}
+                Vector2 dashDirection = moveInput;
+                if (dashDirection == Vector2.zero)
+                    dashDirection = Vector2.right * (isFacingRight ? 1 : -1);
+        
+                rb.velocity = dashDirection.normalized * dashingPower;
+                tr.emitting = true;
+        
+                yield return new WaitForSeconds(dashingTime);
+        
+                tr.emitting = false;
+                rb.gravityScale = originalGravity;
+                isDashing = false;
+        
+                yield return new WaitForSeconds(dashingCooldown);
+                canDash = true;
+            }
+        
+            private bool CanUseAbilities()
+            {
+                return realmShift != null && realmShift.isRealmShifted;
+            }
+        }
