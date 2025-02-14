@@ -1000,6 +1000,7 @@ GameObject:
   - component: {fileID: 387845040}
   - component: {fileID: 387845039}
   - component: {fileID: 387845038}
+  - component: {fileID: 387845041}
   m_Layer: 0
   m_Name: Gaurd
   m_TagString: Untagged
@@ -1119,6 +1120,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &387845041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387845036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f32e3206bb161a648b676c0a3470b435, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialboxcanvas: {fileID: 716323164}
+  speakertext: {fileID: 2120250301}
+  dialougeText: {fileID: 2041951924}
+  potraiteImage: {fileID: 342244399}
+  speaker:
+  - Max
+  - Old man
+  - Max
+  - Old man
+  - Max
+  - Old man
+  - Max
+  - Old man
+  - Max
+  - Old man
+  - Max
+  - Old man
+  dialougeWord:
+  - W-Where am I?
+  - Someplace forgotten
+  - " I need to go back\u2026"
+  - Go back? But you just got here.
+  - " I didn\u2019t mean to!"
+  - " They all say that\u2026 at first"
+  - " I didn\u2019t mean to!"
+  - "Does it matter? What matters is\u2026 why you\u2019re here."
+  - "I don\u2019t know! I was just playing\u2014then I fell and"
+  - 'Fell?  Or were you pulled? '
+  - W-What do you mean?
+  - "You\u2019ll remember\u2026 soon enough."
+  potrait:
+  - {fileID: 21300000, guid: 946a2c8f9e0ddc949b3a1ef6afebd42f, type: 3}
+  - {fileID: 21300000, guid: 8e188e1bf9a4f6d4295ef46dfc25659a, type: 3}
+  - {fileID: 21300000, guid: 946a2c8f9e0ddc949b3a1ef6afebd42f, type: 3}
+  - {fileID: 21300000, guid: 8e188e1bf9a4f6d4295ef46dfc25659a, type: 3}
+  - {fileID: 21300000, guid: 946a2c8f9e0ddc949b3a1ef6afebd42f, type: 3}
+  - {fileID: 21300000, guid: 8e188e1bf9a4f6d4295ef46dfc25659a, type: 3}
+  - {fileID: 21300000, guid: 946a2c8f9e0ddc949b3a1ef6afebd42f, type: 3}
+  - {fileID: 21300000, guid: 8e188e1bf9a4f6d4295ef46dfc25659a, type: 3}
+  - {fileID: 21300000, guid: 946a2c8f9e0ddc949b3a1ef6afebd42f, type: 3}
+  - {fileID: 21300000, guid: 8e188e1bf9a4f6d4295ef46dfc25659a, type: 3}
+  - {fileID: 21300000, guid: 946a2c8f9e0ddc949b3a1ef6afebd42f, type: 3}
+  - {fileID: 21300000, guid: 8e188e1bf9a4f6d4295ef46dfc25659a, type: 3}
 --- !u!1 &480092605
 GameObject:
   m_ObjectHideFlags: 0
@@ -1636,7 +1692,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -37.746887, y: 1.50177, z: -10}
+  m_LocalPosition: {x: -15.300014, y: 1.5017798, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5796,7 +5852,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2048808529623053642, guid: 74c2ff33b8eeb0f40adde105043eb7bb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -48.1
+      value: -15.3
       objectReference: {fileID: 0}
     - target: {fileID: 2048808529623053642, guid: 74c2ff33b8eeb0f40adde105043eb7bb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6317,7 +6373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7793786631616729991, guid: 298f95a57886ec340be99c6e8795ca38, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -48.1
+      value: -15.3
       objectReference: {fileID: 0}
     - target: {fileID: 7793786631616729991, guid: 298f95a57886ec340be99c6e8795ca38, type: 3}
       propertyPath: m_LocalPosition.y
