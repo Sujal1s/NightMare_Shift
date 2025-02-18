@@ -15,16 +15,16 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
     private Vector2 jumpInput;
 
-    private bool ismoving; // Flag indicating whether the player is moving
+    private bool ismoving;
     private bool canDash = true;
     private bool isDashing;
     private bool isjump;
     public bool isground { get; private set; }
     private bool isFacingRight = true;
+    
 
     private Rigidbody2D rb;
-    private Animator animator; // Reference to the Animator component
-
+    private Animator animator; 
     public Transform groundcheck;
     public LayerMask groundLayer;
     public TrailRenderer tr;
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>(); // Gets the Animator component attached to this GameObject
+        animator = GetComponent<Animator>(); 
     }
 
     private void Update()
@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(moveInput.x * speed, rb.velocity.y);
     }
 
-    // Update the animator's "isMoving" and "isJumping" parameters
+    
     private void UpdateAnimation()
     {
         if (animator != null)
@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                // Only allow double jump if realm is shifted
+               
                 if (!isjump && CanUseAbilities())
                 {
                     daublejump();
