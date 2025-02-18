@@ -76,19 +76,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
     void groundcheckf()
     {
-
         isground = Physics2D.OverlapCircle(groundcheck.position, 0.2f, groundLayer);
-
     }
 
     private void Flip()
     {
-
         if ((isFacingRight && horizontal < 0f) || (!isFacingRight && horizontal > 0f))
-
         {
             Vector3 localScale = transform.localScale;
             isFacingRight = !isFacingRight;

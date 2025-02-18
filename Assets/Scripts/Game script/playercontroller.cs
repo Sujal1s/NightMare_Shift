@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
         if (animator != null)
         {
             animator.SetBool("_ismoving", ismoving);
+            animator.SetBool("_isjump", isground);
            
         }
     }
@@ -74,17 +75,18 @@ public class PlayerController : MonoBehaviour
             if (isground)
             {
                 jump();
-                isjump = true;
+                
+                isjump = false;
             }
             else
             {
                 // Only allow double jump if realm is shifted
-                if (CanUseAbilities())
+                if (!isjump && CanUseAbilities())
                 {
                     daublejump();
-                    isjump = false;
+                    isjump = true;
                 }
-            }
+            }   
            
         }
     }
