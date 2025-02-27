@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1670571414300585125}
   - component: {fileID: 6210752103264930052}
   - component: {fileID: 2928263321626258828}
-  - component: {fileID: 2884763822171886725}
+  - component: {fileID: 6689613154775770247}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -413,6 +413,8 @@ MonoBehaviour:
     m_Bits: 8
   tr: {fileID: 7363870396961920567}
   realmShift: {fileID: 0}
+  polygonCollider: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!95 &2928263321626258828
 Animator:
   serializedVersion: 5
@@ -434,7 +436,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &2884763822171886725
+--- !u!61 &6689613154775770247
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -466,7 +468,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0028251223, y: -0.21471334}
+  m_Offset: {x: 0.0010867119, y: -0.21517718}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -477,7 +479,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.15199915, y: 0.41057336}
+  m_Size: {x: 0.1710167, y: 0.40964556}
   m_EdgeRadius: 0
 --- !u!1 &3736325082849736423
 GameObject:

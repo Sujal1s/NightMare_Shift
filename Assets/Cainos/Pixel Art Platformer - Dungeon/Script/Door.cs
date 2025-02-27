@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using Cainos.LucidEditor;
+using Unity.VisualScripting;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -24,8 +26,20 @@ namespace Cainos.PixelArtPlatformer_Dungeon
                 return animator;
             }
         }
-        private Animator animator;
 
+        private void Awake()
+        {
+            cd = GetComponent<BoxCollider2D>();
+           
+            if (cd  != null)
+            {
+                Debug.Log("cd enable");
+                
+            }
+        }
+
+        private Animator animator;
+        private BoxCollider2D cd;
 
         [FoldoutGroup("Runtime"), ShowInInspector]
         public bool IsOpened
@@ -57,6 +71,18 @@ namespace Cainos.PixelArtPlatformer_Dungeon
         [SerializeField,HideInInspector]
         private bool isOpened;
 
+        private void Update()
+        {
+            /*if (isOpened == true)
+            {
+                cd.isTrigger = true;
+            }
+            else
+            {
+                cd.isTrigger = false;
+            }*/
+        }
+
         private void Start()
         {
             Animator.Play(isOpened ? "Opened" : "Closed");
@@ -68,12 +94,24 @@ namespace Cainos.PixelArtPlatformer_Dungeon
         public void Open()
         {
             IsOpened = true;
+            if ( isOpened )
+            {
+                cd.isTrigger = true;
+            }
+            
         }
 
         [FoldoutGroup("Runtime"), HorizontalGroup("Runtime/Button"), Button("Close")]
         public void Close()
         {
             IsOpened = false;
+            if (isOpened == false)
+            {
+                cd.isTrigger = false;
+            }
+            
         }
+
+       
     }
 }
