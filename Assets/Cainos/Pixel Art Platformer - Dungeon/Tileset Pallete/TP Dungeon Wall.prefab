@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4529988981487818530}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 800454260400281277}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1839735485 &7481255215723229412
 Tilemap:
@@ -938,11 +938,9 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: -537068020, guid: 696dadb57c80a0744be25cd33ceff002, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -930382446721999571, guid: 696dadb57c80a0744be25cd33ceff002,
-      type: 3}
+    m_Data: {fileID: -930382446721999571, guid: 696dadb57c80a0744be25cd33ceff002, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 6131776337976118134, guid: 696dadb57c80a0744be25cd33ceff002,
-      type: 3}
+    m_Data: {fileID: 6131776337976118134, guid: 696dadb57c80a0744be25cd33ceff002, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 64
     m_Data:
@@ -1062,6 +1060,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5912254950565237596}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -1069,7 +1068,6 @@ Transform:
   m_Children:
   - {fileID: 8973580598884441578}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &2037262657850182128
 Grid:
@@ -1083,7 +1081,7 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &2765382199419084780
+--- !u!114 &7303013918165160458
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
