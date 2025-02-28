@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 6491913702539827632}
   - component: {fileID: 527262527760620934}
   m_Layer: 0
-  m_Name: PF Dungeon Props - Door Iron 01
+  m_Name: Door_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

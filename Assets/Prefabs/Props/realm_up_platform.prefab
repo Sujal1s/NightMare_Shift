@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6265670936862214329}
   - component: {fileID: 8930051543745126958}
-  - component: {fileID: -2599474268447040331}
+  - component: {fileID: -84342994448981759}
   m_Layer: 0
-  m_Name: PF Dungeon Props - Moving platform
+  m_Name: realm_up_platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-2599474268447040331
+--- !u!114 &-84342994448981759
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,8 +94,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 390456860282783827}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8abaef700b119f1499572f9c47be293f, type: 3}
+  m_Script: {fileID: 11500000, guid: 828a7dc48ffd0784288fa4300ffde0d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveDistance: 4.5
   moveSpeed: 2
+  realmShift: {fileID: 0}
