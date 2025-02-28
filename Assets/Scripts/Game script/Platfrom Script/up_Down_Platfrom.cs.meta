@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Game script/Platfrom Script/up_Down_Platfrom.cs.meta
 guid: 17bc0678d59df2f4ca781a8ee8f2cb46
+========
+guid: 8abaef700b119f1499572f9c47be293f
+>>>>>>>> 4e5df21f50a4e0e6266d38f0a7df3ab172530860:Assets/Scripts/Game script/Platfrom Script/moving platform.cs.meta
 labels:
 - Platform
 MonoImporter:
