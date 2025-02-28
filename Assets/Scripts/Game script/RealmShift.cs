@@ -1,25 +1,29 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem; 
+using UnityEngine.Rendering.Universal;
 public class RealmShift : MonoBehaviour
 {
-    public Sprite normalSprite;      
-    public Sprite realmShiftSprite;  
-    private SpriteRenderer spriteRenderer; 
+    [SerializeField] private Light2D light;
+    [SerializeField] private Light2D spotlight;
     public bool isRealmShifted = false;
-    
+
+
+    private void Awake()
+    {
+        
+    }
+
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer == null)
-        {
-            Debug.LogError("SpriteRenderer not found on " + gameObject.name);
-        }
+        
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R)|| Input.GetKeyDown(KeyCode.JoystickButton5)) 
         {
+            
             ToggleRealmShift();
         }
     }
@@ -29,15 +33,22 @@ public class RealmShift : MonoBehaviour
 
     void ToggleRealmShift()
     {
-        if (isRealmShifted)
+        if (isRealmShifted == false)
         {
-            spriteRenderer.sprite = normalSprite;
-            isRealmShifted = false;
+            
+            isRealmShifted = true;
+            Debug.Log("realm active");
+            light.intensity = 0.21f;
+            Debug.Log("intensity 0");
+            spotlight.intensity = 0.61f;
         }
         else
         {
-            spriteRenderer.sprite = realmShiftSprite;
-            isRealmShifted = true;
+           
+            isRealmShifted = false;
+            light.intensity = 0.84f;
+            spotlight.intensity = 0f;
+            Debug.Log("realm deactive");
         }
     }
 }
