@@ -161,7 +161,7 @@ public class PlayerController : MonoBehaviour
         return realmShift != null && realmShift.isRealmShifted;
     }
   
-    void UpdateColliderShape()
+    /*void UpdateColliderShape()
     {
         // Get the current sprite from the SpriteRenderer
         Sprite currentSprite = spriteRenderer.sprite;
@@ -174,5 +174,5 @@ public class PlayerController : MonoBehaviour
             currentSprite.GetPhysicsShape(i, path);
             polygonCollider.SetPath(i, path.ToArray());
         }
-    }
+    }*/
 }        
