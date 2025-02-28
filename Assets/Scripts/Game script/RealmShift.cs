@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem; 
 using UnityEngine.Rendering.Universal;
@@ -26,6 +27,18 @@ public class RealmShift : MonoBehaviour
             
             ToggleRealmShift();
         }
+
+        if (isRealmShifted == true)
+        {
+            Debug.Log("true");
+        }
+        else if (isRealmShifted == false)
+        {
+            Debug.Log("false");
+        }
+        {
+            
+        }
     }
 
   
@@ -36,18 +49,22 @@ public class RealmShift : MonoBehaviour
         if (isRealmShifted == false)
         {
             
-            isRealmShifted = true;
+            
             Debug.Log("realm active");
             light.intensity = 0.21f;
             Debug.Log("intensity 0");
             spotlight.intensity = 0.61f;
+            isRealmShifted = true;
+            
+            
         }
         else
         {
            
-            isRealmShifted = false;
+            
             light.intensity = 0.84f;
             spotlight.intensity = 0f;
+            isRealmShifted = false;
             Debug.Log("realm deactive");
         }
     }
