@@ -17883,11 +17883,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59325cec8dcea1c4ebf38b944c7261c4, type: 3}
---- !u!1 &525285332 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1234305800642018624, guid: f8a68f83e31bf514d9cee2745dbba230, type: 3}
-  m_PrefabInstance: {fileID: 1507937558}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &533880538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18516,24 +18511,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 219337317314902035, guid: f8a68f83e31bf514d9cee2745dbba230, type: 3}
   m_PrefabInstance: {fileID: 1507937558}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &672051733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 525285332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2234ccb2c8603764bb2787174fa998cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 657281772}
-  distance: -0.78
-  height: 0
-  damping: 5
-  mapX: 100
-  mapY: 100
 --- !u!1001 &673514817
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23785,13 +23762,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5069907562615589323, guid: f8a68f83e31bf514d9cee2745dbba230, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 657281772}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1234305800642018624, guid: f8a68f83e31bf514d9cee2745dbba230, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 672051733}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8a68f83e31bf514d9cee2745dbba230, type: 3}
 --- !u!4 &1523626999 stripped
 Transform:
@@ -24282,7 +24260,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 0.74509805, g: 0.74509805, b: 0.74509805, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -44028,9 +44006,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66cb7ad26572eaf41aa479608134a317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  switchScript: {fileID: 2089395188}
-  interactionTrigger: {fileID: 2089395187}
-  interactionKey: 101
 --- !u!4 &1936106613
 Transform:
   m_ObjectHideFlags: 0
@@ -45016,22 +44991,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6265670936862214329, guid: 04b1fc53e6c0fd040980e8a292c72382, type: 3}
   m_PrefabInstance: {fileID: 969092870}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &2089395187 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 333667782701465595, guid: 111b144d92d43c148ac7c704513e7d13, type: 3}
-  m_PrefabInstance: {fileID: 1018085556}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2089395188 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4157728320252114848, guid: 111b144d92d43c148ac7c704513e7d13, type: 3}
-  m_PrefabInstance: {fileID: 1018085556}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53f6ae08fba9e2749b0afde4731cc8de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2089911230
 GameObject:
   m_ObjectHideFlags: 0
