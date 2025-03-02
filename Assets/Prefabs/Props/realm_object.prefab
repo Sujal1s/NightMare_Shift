@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8930051543745126958}
   - component: {fileID: 7003253399779936308}
   m_Layer: 0
-  m_Name: PF Dungeon Props - Crate 02
+  m_Name: realm_object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
