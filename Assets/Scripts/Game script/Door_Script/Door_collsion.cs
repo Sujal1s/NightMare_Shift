@@ -10,7 +10,7 @@ using UnityEditor.SceneManagement;
 
 namespace Cainos.PixelArtPlatformer_Dungeon
 {
-    public class Door_collsion : MonoBehaviour
+    public class Door_collsion : MonoBehaviour // this scipt is used on door if want to open with  collsion
     {
         [FoldoutGroup("Reference")] public SpriteRenderer spriteRenderer;
         [FoldoutGroup("Reference")] public Sprite spriteOpened;
