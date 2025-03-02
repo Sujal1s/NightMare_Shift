@@ -39,11 +39,15 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         polygonCollider = GetComponent<PolygonCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        
 
     }
 
     private void Update()
     {
+        Vector3 currentPosition = transform.position;
+        currentPosition.z = 2.91f;  // Lock Z-axis to 1.16
+        transform.position = currentPosition;
         GroundCheck();
         Flip();
         UpdateAnimation();

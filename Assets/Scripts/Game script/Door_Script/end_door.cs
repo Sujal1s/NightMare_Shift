@@ -10,7 +10,7 @@ using UnityEditor.SceneManagement;
 
 namespace Cainos.PixelArtPlatformer_Dungeon
 {
-    public class end_door : MonoBehaviour
+    public class end_door : MonoBehaviour // this is the end door that change the Scene
     {
       public SpriteRenderer spriteRenderer;
       public Sprite spriteOpened; 
