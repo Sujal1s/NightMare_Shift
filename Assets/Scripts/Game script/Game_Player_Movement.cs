@@ -78,7 +78,10 @@ public class PlayerMovement : MonoBehaviour
 
     void groundcheckf()
     {
+        
         isground = Physics2D.OverlapCircle(groundcheck.position, 0.2f, groundLayer);
+        Debug.Log("groundcheckf");
+        
     }
 
     private void Flip()

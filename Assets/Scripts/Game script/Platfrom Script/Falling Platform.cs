@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,6 +8,11 @@ public class FallingPlatform : MonoBehaviour
     [SerializeField] private float fallDelay = 1f;
     [SerializeField] private float destroyDelay = 2f;
     [SerializeField] private Rigidbody2D rb;
+
+    private void Update()
+    {
+        gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
