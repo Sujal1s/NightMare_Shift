@@ -10,7 +10,7 @@ namespace Cainos.PixelArtPlatformer_Dungeon
 {
     public class Switch_pully : MonoBehaviour // this script is used for the lever who help the door to unlock
     {
-        public Elevator target; // Door is as script refreance and target is for the door
+        public Elevator target; // Reference to the elevator to control
 
         public SpriteRenderer spriteRenderer;
         public Sprite spriteOn;
@@ -34,13 +34,11 @@ namespace Cainos.PixelArtPlatformer_Dungeon
                 if (isOn)
                 {
                     TurnOff();
-                 //   target.Close();
                     Debug.Log("off");
                 }
                 else
                 {
                     TurnOn();
-                  //  target.Open();
                     Debug.Log("on");
                 }
             }
@@ -75,7 +73,11 @@ namespace Cainos.PixelArtPlatformer_Dungeon
             {
                 isOn = value;
 
-               // if (target) target.IsOpened = isOn;
+                // Control the elevator based on switch state
+                if (target) 
+                {
+                    target.SetActiveState(isOn);
+                }
 
                 if (Application.isPlaying)
                 {

@@ -57,6 +57,14 @@ namespace Cainos.PixelArtPlatformer_Dungeon
         }
         private bool isWaiting = false;
 
+        // New property to control if the elevator is active (moving) or not
+        [FoldoutGroup("Runtime"), ShowInInspector]
+        public bool IsActive 
+        { 
+            get { return isActive; }
+            set { isActive = value; }
+        }
+        private bool isActive = false;
 
         private float waitTimer;
         private float curSpeed;
@@ -78,6 +86,10 @@ namespace Cainos.PixelArtPlatformer_Dungeon
 
         private void Update()
         {
+            // Only process elevator movement if it's active
+            if (!IsActive)
+                return;
+                
             if (IsWaiting)
             {
                 waitTimer += Time.deltaTime;
@@ -111,7 +123,17 @@ namespace Cainos.PixelArtPlatformer_Dungeon
 
         private void FixedUpdate()
         {
-            Length = secondOrderDynamics.Update(targetLength, Time.fixedDeltaTime);
+            // Only update physics if elevator is active
+            if (IsActive)
+            {
+                Length = secondOrderDynamics.Update(targetLength, Time.fixedDeltaTime);
+            }
+        }
+
+        // Method to control elevator state - can be called from other scripts
+        public void SetActiveState(bool active)
+        {
+            IsActive = active;
         }
 
         public enum State
@@ -121,4 +143,3 @@ namespace Cainos.PixelArtPlatformer_Dungeon
         }
     }
 }
-

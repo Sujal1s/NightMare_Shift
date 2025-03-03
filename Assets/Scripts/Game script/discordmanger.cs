@@ -25,7 +25,7 @@ public class discordmanger : MonoBehaviour
         var activty = new Discord.Activity
         {
            
-            State = "At School",
+            State = "At Dungeon",
             Details = "Exploring dark world",
             Timestamps =
             {
