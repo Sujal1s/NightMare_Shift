@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6265670936862214329}
   - component: {fileID: 25769856085108730}
-  - component: {fileID: 4157728320252114848}
   - component: {fileID: 333667782701465595}
   - component: {fileID: 1727248293199566777}
   m_Layer: 0
-  m_Name: Door_pully
+  m_Name: Switch_ Elevator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,23 +57,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4157728320252114848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 390456860282783827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53f6ae08fba9e2749b0afde4731cc8de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  spriteRenderer: {fileID: 2250558098639947322}
-  spriteOn: {fileID: 1446294333, guid: 0afeb8577b003fb4589464f46d5b4b88, type: 3}
-  spriteOff: {fileID: -1141442345, guid: 0afeb8577b003fb4589464f46d5b4b88, type: 3}
-  isOn: 0
 --- !u!61 &333667782701465595
 BoxCollider2D:
   m_ObjectHideFlags: 0

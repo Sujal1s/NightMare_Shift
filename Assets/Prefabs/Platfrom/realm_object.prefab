@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6265670936862214329}
   - component: {fileID: 8930051543745126958}
   - component: {fileID: 7003253399779936308}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: realm_object
   m_TagString: Untagged
   m_Icon: {fileID: 0}

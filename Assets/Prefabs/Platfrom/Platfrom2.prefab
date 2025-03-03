@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 2792729741738648825}
   - component: {fileID: 9174260239981917141}
   m_Layer: 0
-  m_Name: PF Dungeon Props - Beam 03 B
+  m_Name: Platfrom2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
