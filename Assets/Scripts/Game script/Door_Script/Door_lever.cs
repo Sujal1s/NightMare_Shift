@@ -13,6 +13,7 @@ namespace Cainos.PixelArtPlatformer_Dungeon
 {
     public class Door_lever : MonoBehaviour // this script is used on door that required lever
     {
+        
         [FoldoutGroup("Reference")] public SpriteRenderer spriteRenderer;
         [FoldoutGroup("Reference")] public Sprite spriteOpened;
         [FoldoutGroup("Reference")] public Sprite spriteClosed;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6265670936862214329}
   - component: {fileID: 8930051543745126958}
   - component: {fileID: 4634643454724273706}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PF Dungeon Props - Platform Broken 02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5165277192047625971}
   - component: {fileID: 9185246011015455269}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Support
   m_TagString: Untagged
   m_Icon: {fileID: 0}
