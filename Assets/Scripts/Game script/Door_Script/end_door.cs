@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using Cainos.LucidEditor;
 using System.Collections;
+using UnityEngine.SceneManagement;
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -86,7 +87,17 @@ namespace Cainos.PixelArtPlatformer_Dungeon
         private IEnumerator ChangeSceneAfterDelay(float delay)
         {
             yield return new WaitForSeconds(delay);
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Level_2");
+            int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+            
+            if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+            {
+                SceneManager.LoadScene(nextSceneIndex);
+            }
+            else
+            {
+                Debug.Log("This is the last scene in build settings");
+                
+            }
         }
        
     }
