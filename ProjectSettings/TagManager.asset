@@ -9,6 +9,7 @@ TagManager:
   - Respwan
   - Checkpoint
   - lit
+  - spike
   layers:
   - Default
   - TransparentFX
