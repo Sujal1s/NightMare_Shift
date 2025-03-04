@@ -301,12 +301,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e820cd7f96fe3478a840bfc45f54f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 4
   Jump: 5
   Djump: 5
   dashingPower: 5
   dashingTime: 0.3
-  dashingCooldown: 0.5
+  dashingCooldown: 1.5
   groundcheck: {fileID: 2138645151778345315}
   groundLayer:
     serializedVersion: 2

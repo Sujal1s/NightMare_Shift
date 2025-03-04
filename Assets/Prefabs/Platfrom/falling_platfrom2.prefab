@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5266983695527624376}
   - component: {fileID: 2188907209568732090}
   - component: {fileID: 7724838379360977500}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: falling_platfrom2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 390456860282783827}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

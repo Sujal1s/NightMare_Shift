@@ -179,8 +179,9 @@ GameObject:
   m_Component:
   - component: {fileID: 821944303019651604}
   - component: {fileID: 6500811722617033953}
+  - component: {fileID: 2602973556725757487}
   m_Layer: 0
-  m_Name: Fire Torch
+  m_Name: Fire Torch blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,7 +244,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 965583602, guid: daa359c07b4be2f47b477ca2857b031a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -255,6 +256,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2602973556725757487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570124260688064895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e054a1500f6664b42973d6c1a885482a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  realmShiftTrouch: {fileID: 7846728624931390790}
 --- !u!1 &2802337569809532810
 GameObject:
   m_ObjectHideFlags: 0
@@ -9924,7 +9938,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4004786007552470568}
-  - component: {fileID: 4881452706452397891}
+  - component: {fileID: 1324867334584812444}
   m_Layer: 0
   m_Name: Lit
   m_TagString: Untagged
@@ -9951,7 +9965,7 @@ Transform:
   - {fileID: 3232648640999031243}
   m_Father: {fileID: 821944303019651604}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4881452706452397891
+--- !u!114 &1324867334584812444
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9960,10 +9974,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7846728624931390790}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee96ae59a0eefac44b1eb03e1e75de4a, type: 3}
+  m_Script: {fileID: 11500000, guid: e054a1500f6664b42973d6c1a885482a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rs: {fileID: 0}
+  realmShiftTrouch: {fileID: 0}
 --- !u!1 &8371563782901960622
 GameObject:
   m_ObjectHideFlags: 0

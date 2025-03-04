@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9055384702818412572}
   - component: {fileID: 5247015378325076677}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Chain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2274493898324445502}
   - component: {fileID: 8386850527565415568}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Metal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 7292622582502913521}
   - component: {fileID: 2792729741738648825}
   - component: {fileID: 9174260239981917141}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Platfrom2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
