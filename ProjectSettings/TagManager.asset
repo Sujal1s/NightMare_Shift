@@ -8,6 +8,9 @@ TagManager:
   - RealmShiftObject
   - Respwan
   - Checkpoint
+  - lit
+  - spike
+  - Key
   layers:
   - Default
   - TransparentFX

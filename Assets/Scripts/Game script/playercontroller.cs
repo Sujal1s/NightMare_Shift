@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using System.Collections.Generic;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
@@ -15,29 +15,39 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
     private Vector2 jumpInput;
 
-    private bool ismoving; // Flag indicating whether the player is moving
+    private bool ismoving;
     private bool canDash = true;
     private bool isDashing;
     private bool isjump;
     public bool isground { get; private set; }
     private bool isFacingRight = true;
 
-    private Rigidbody2D rb;
-    private Animator animator; // Reference to the Animator component
 
+    private Rigidbody2D rb;
+    private Animator animator;
     public Transform groundcheck;
     public LayerMask groundLayer;
     public TrailRenderer tr;
     public RealmShift realmShift;
+    [SerializeField] private PolygonCollider2D polygonCollider;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>(); // Gets the Animator component attached to this GameObject
+        animator = GetComponent<Animator>();
+        polygonCollider = GetComponent<PolygonCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        
+
     }
 
     private void Update()
     {
+        Vector3 currentPosition = transform.position;
+        currentPosition.z = 2.91f;  // Lock Z-axis to 1.16
+        transform.position = currentPosition;
         GroundCheck();
         Flip();
         UpdateAnimation();
@@ -51,14 +61,14 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(moveInput.x * speed, rb.velocity.y);
     }
 
-    // Update the animator's "isMoving" and "isJumping" parameters
+
     private void UpdateAnimation()
     {
         if (animator != null)
         {
             animator.SetBool("_ismoving", ismoving);
             animator.SetBool("_isjump", isground);
-           
+
         }
     }
 
@@ -75,19 +85,19 @@ public class PlayerController : MonoBehaviour
             if (isground)
             {
                 jump();
-                
+
                 isjump = false;
             }
             else
             {
-                // Only allow double jump if realm is shifted
+
                 if (!isjump && CanUseAbilities())
                 {
                     daublejump();
                     isjump = true;
                 }
-            }   
-           
+            }
+
         }
     }
 
@@ -112,7 +122,7 @@ public class PlayerController : MonoBehaviour
     private void GroundCheck()
     {
         isground = Physics2D.OverlapCircle(groundcheck.position, 0.2f, groundLayer);
-     
+
     }
 
     private void Flip()
@@ -125,33 +135,48 @@ public class PlayerController : MonoBehaviour
             transform.localScale = localScale;
         }
     }
-        
-            private IEnumerator Dash()
-            {
-                canDash = false;
-                isDashing = true;
-                float originalGravity = rb.gravityScale;
-                rb.gravityScale = 0f;
-        
-                Vector2 dashDirection = moveInput;
-                if (dashDirection == Vector2.zero)
-                    dashDirection = Vector2.right * (isFacingRight ? 1 : -1);
-        
-                rb.velocity = dashDirection.normalized * dashingPower;
-                tr.emitting = true;
-        
-                yield return new WaitForSeconds(dashingTime);
-        
-                tr.emitting = false;
-                rb.gravityScale = originalGravity;
-                isDashing = false;
-        
-                yield return new WaitForSeconds(dashingCooldown);
-                canDash = true;
-            }
-        
-            private bool CanUseAbilities()
-            {
-                return realmShift != null && realmShift.isRealmShifted;
-            }
+
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+
+        Vector2 dashDirection = moveInput;
+        if (dashDirection == Vector2.zero)
+            dashDirection = Vector2.right * (isFacingRight ? 1 : -1);
+
+        rb.velocity = dashDirection.normalized * dashingPower;
+        tr.emitting = true;
+
+        yield return new WaitForSeconds(dashingTime);
+
+        tr.emitting = false;
+        rb.gravityScale = originalGravity;
+        isDashing = false;
+
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
+    }
+
+    private bool CanUseAbilities()
+    {
+        return realmShift != null && realmShift.isRealmShifted;
+    }
+  
+    /*void UpdateColliderShape()
+    {
+        // Get the current sprite from the SpriteRenderer
+        Sprite currentSprite = spriteRenderer.sprite;
+
+        // Clear the current path and set the new path based on the current sprite
+        polygonCollider.pathCount = currentSprite.GetPhysicsShapeCount();
+        for (int i = 0; i < polygonCollider.pathCount; i++)
+        {
+            var path = new List<Vector2>();
+            currentSprite.GetPhysicsShape(i, path);
+            polygonCollider.SetPath(i, path.ToArray());
         }
+    }*/
+}        
