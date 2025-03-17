@@ -10,6 +10,7 @@ TagManager:
   - Checkpoint
   - lit
   - spike
+  - Key
   layers:
   - Default
   - TransparentFX

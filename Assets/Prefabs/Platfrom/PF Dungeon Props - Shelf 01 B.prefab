@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9072807208709021889}
   - component: {fileID: 3491139030337275940}
   - component: {fileID: 2586114724221193669}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PF Dungeon Props - Shelf 01 B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4717648116016737122}
   - component: {fileID: 2929607011179750730}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

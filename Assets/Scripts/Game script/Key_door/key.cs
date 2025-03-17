@@ -9,7 +9,7 @@ public class key : MonoBehaviour
 
     private Vector2 vel;
     public bool ispickup;
-    public float smoothTime = 0.3f;
+   [SerializeField] private float smoothTime = 0.3f;
      public int doorkey = 0;
     // Start is called before the first frame update
     void Start()

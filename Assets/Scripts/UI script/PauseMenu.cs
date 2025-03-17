@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,6 +6,14 @@ public class PauseMenu : MonoBehaviour
 {
 
     [SerializeField] GameObject pauseMenu;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("PauseMenu");
+        }
+    }
 
     public void Pause()
     {
