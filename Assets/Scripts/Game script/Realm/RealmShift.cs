@@ -30,11 +30,11 @@ public class RealmShift : MonoBehaviour
 
         if (isRealmShifted == true)
         {
-            Debug.Log("true");
+          
         }
         else if (isRealmShifted == false)
         {
-            Debug.Log("false");
+            
         }
         {
             
