@@ -29,7 +29,7 @@ namespace Cainos.PixelArtPlatformer_Dungeon
 
         private void Update()
         {
-            if (Input.GetKeyDown((KeyCode.E)) && range)
+            if (Input.GetKeyDown((KeyCode.E)) && range )
             {
                 if (isOn)
                 {

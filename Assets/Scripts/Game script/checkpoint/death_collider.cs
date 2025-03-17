@@ -5,6 +5,7 @@ using UnityEngine;
 public class death_collider : MonoBehaviour
 {
     [SerializeField] GameObject checkpoint;
+    [SerializeField] GameObject keypoint;
     [SerializeField] Transform respawnPoint;
     [SerializeField] private checkpoint cp;
     void Start()
@@ -28,5 +29,7 @@ public class death_collider : MonoBehaviour
         {
             other.transform.position = respawnPoint.transform.position;
         }
+
+        
     }
 }
