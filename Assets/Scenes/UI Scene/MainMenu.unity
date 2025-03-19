@@ -243,7 +243,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ffcb7dedbe16d8d4994f06a6b8bf09cb, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 332309b7165930f4a9af61e0eaa38470, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1498,8 +1498,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -520, y: 295.3}
-  m_SizeDelta: {x: -1511.1631, y: -942.1992}
+  m_AnchoredPosition: {x: -520, y: 270}
+  m_SizeDelta: {x: -1217.3718, y: -942.1992}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1460005336
 MonoBehaviour:
@@ -1521,7 +1521,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Game
+  m_text: Start New Game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b460cd40b194c4940b28c0c04ac9d5f3, type: 2}
   m_sharedMaterial: {fileID: -8681975152551719756, guid: b460cd40b194c4940b28c0c04ac9d5f3, type: 2}
@@ -1871,7 +1871,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1399963025}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: SettingMenu
+        m_MethodName: OpenSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
