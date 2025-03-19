@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -13,18 +14,26 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] private string[] speaker;
     [SerializeField] private string[] dialougeWord;
     [SerializeField] private Sprite[] potrait;
+    private Animator animator;
+
 
     private int step;
     private bool dialougeactive;
 
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        
+    }
+
     private void Update()
     {
-        if (Input.GetButtonDown("Intraction") && dialougeactive)
+        if (Input.GetKeyDown(KeyCode.JoystickButton3) || Input.GetKeyDown(KeyCode.E) && dialougeactive)
         {
             if (step >= speaker.Length)
             {
                 dialboxcanvas.SetActive(false);
-                StartCoroutine(DestroyDelay());
+                
                 return;
             }
             else
@@ -42,6 +51,7 @@ public class DialogueSystem : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            animator.SetTrigger("PlayReverse");
             dialougeactive = true;
         }
     }
@@ -50,6 +60,7 @@ public class DialogueSystem : MonoBehaviour
     {
         dialougeactive = false;
         dialboxcanvas.SetActive(false);
+        animator.SetTrigger("PlayDisappear");
     }
 
     private IEnumerator DestroyDelay()
