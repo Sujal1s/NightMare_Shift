@@ -5,25 +5,23 @@ using UnityEngine;
 
 public class Tutorialscript : MonoBehaviour
 {
-    
     [SerializeField] private GameObject tutorial;
+    public Animator animator;
+    private bool hasTriggered = false;
 
     void Start()
     {
         tutorial.SetActive(false);
-        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (!hasTriggered && other.CompareTag("Player"))
         {
-            Debug.Log("Player entered");
             tutorial.SetActive(true);
-            Debug.Log(tutorial);
-            
+            animator.SetTrigger("OpenTrigger");
+            hasTriggered = true;
         }
-        
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -31,11 +29,7 @@ public class Tutorialscript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             tutorial.SetActive(false);
-          
+            hasTriggered = false;
         }
-        
-    
     }
-
-  
 }

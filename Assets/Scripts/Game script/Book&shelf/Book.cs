@@ -3,34 +3,38 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Book : MonoBehaviour
 {
     public int book;
-
     [SerializeField] private TextMeshProUGUI bookcollected;
-   
+    private bool collsion = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.JoystickButton3)  && collsion)
+        {
+            book++;
+            Debug.Log(book);
+            bookcollected.text = book.ToString();
+            Destroy(gameObject);
+        }
     }
-    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            book++;
-            Debug.Log("book collected");
-            bookcollected.text = "You Collected the book";
+            collsion = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            collsion = false;
         }
     }
 }

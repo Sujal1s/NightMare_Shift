@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
         GroundCheck();
         Flip();
         UpdateAnimation();
+        jumpaction();
+
     }
 
     private void FixedUpdate()
@@ -78,9 +80,16 @@ public class PlayerController : MonoBehaviour
         ismoving = moveInput != Vector2.zero;
     }
 
-    public void OnJump(InputAction.CallbackContext context)
+
+
+    public void OnSprint(InputAction.CallbackContext context)
     {
-        if (context.started)
+      
+    }
+
+    void jumpaction()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0))
         {
             if (isground)
             {
@@ -98,14 +107,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-        }
-    }
-
-    public void OnSprint(InputAction.CallbackContext context)
-    {
-        if (context.started && canDash && CanUseAbilities())
-        {
-            StartCoroutine(Dash());
         }
     }
 
