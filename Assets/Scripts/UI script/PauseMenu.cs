@@ -34,16 +34,19 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
-        if (pauseMenuUI != null)
-        {
-            pauseMenuUI.SetActive(true);
-            Time.timeScale = 0f;
-            GameIsPaused = true;
-        }
-        else
-        {
-            Debug.LogError("PauseMenuUI is not assigned in the Inspector!");
-        }
+        /*        if (pauseMenuUI != null)
+                {
+                    pauseMenuUI.SetActive(true);
+                    Time.timeScale = 0f;
+                    GameIsPaused = true;
+                }
+                else
+                {
+                    Debug.LogError("PauseMenuUI is not assigned in the Inspector!");
+
+                }*/
+        SceneManager.LoadScene("PauseMenu");
+
     }
 
     public void MainMenu()
