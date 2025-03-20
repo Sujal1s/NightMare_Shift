@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6930122694965717509}
   - component: {fileID: 6491913702539827632}
   - component: {fileID: 6777624555403725528}
-  - component: {fileID: 4248286906524084868}
+  - component: {fileID: 1893503874827390695}
   m_Layer: 3
   m_Name: TRAPDOOR
   m_TagString: Untagged
@@ -186,7 +186,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0010746, y: 0.13082007}
   m_EdgeRadius: 0
---- !u!114 &4248286906524084868
+--- !u!114 &1893503874827390695
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6930122694965717508}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82807aef273985d49b6ce3c5a588b5fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ec3c3ba2d51bb9449929a20ea995d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
