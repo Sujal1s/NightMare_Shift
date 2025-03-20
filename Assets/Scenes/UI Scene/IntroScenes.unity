@@ -407,7 +407,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'ARTS
+  m_Text: 'Artiest
 
     Dev gawande,Shayaan mulani'
 --- !u!222 &846705931
@@ -653,7 +653,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 2
-  m_Text: 'Pixel Quest: The Lost Realms'
+  m_Text: 'Dreamfall : Realm Shift'
 --- !u!222 &1379654802
 CanvasRenderer:
   m_ObjectHideFlags: 0

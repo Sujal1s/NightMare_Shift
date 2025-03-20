@@ -57,6 +57,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        dashaction();
+
         if (isDashing)
             return;
 
@@ -82,9 +84,13 @@ public class PlayerController : MonoBehaviour
 
 
 
-    public void OnSprint(InputAction.CallbackContext context)
+    void dashaction()
     {
-      
+        if (Input.GetKeyDown(KeyCode.E) && canDash && CanUseAbilities() || (Input.GetKeyDown(KeyCode.JoystickButton2))&& canDash && CanUseAbilities() )
+        {
+            StartCoroutine(Dash());
+        }
+       
     }
 
     void jumpaction()
