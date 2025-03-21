@@ -28,7 +28,7 @@ public class DialogueSystem : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.JoystickButton3) || Input.GetKeyDown(KeyCode.E) && dialougeactive)
+        if (Input.GetKeyDown(KeyCode.JoystickButton3)&& dialougeactive || Input.GetKeyDown(KeyCode.E) && dialougeactive)
         {
             if (step >= speaker.Length)
             {
