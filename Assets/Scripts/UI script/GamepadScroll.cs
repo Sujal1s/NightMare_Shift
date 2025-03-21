@@ -10,7 +10,7 @@ public class GamepadDropdown : MonoBehaviour
     {
         if (dropdown != null && EventSystem.current.currentSelectedGameObject == dropdown.gameObject)
         {
-            if (Input.GetButtonDown("Submit")) // A button (Xbox)
+            if (Input.GetButtonDown("Submit"))
             {
                 dropdown.Show();
             }

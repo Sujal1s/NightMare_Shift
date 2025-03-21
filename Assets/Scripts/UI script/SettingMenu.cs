@@ -14,8 +14,8 @@ public class SettingMenu : MonoBehaviour
     private Resolution[] customResolutions = new Resolution[]
     {
         new Resolution { width = 1280, height = 720 },
-        new Resolution { width = 1920, height = 1080 },
-        new Resolution { width = 2560, height = 1440 }
+        new Resolution { width = 1440, height = 1080 },
+        new Resolution { width = 1920, height = 1080 }
     };
 
     private int currentResolutionIndex;
