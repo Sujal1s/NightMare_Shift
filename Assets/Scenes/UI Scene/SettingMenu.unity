@@ -3529,8 +3529,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1044247096}
         m_TargetAssemblyTypeName: SettingMenu, Assembly-CSharp
-        m_MethodName: SetResolution
-        m_Mode: 3
+        m_MethodName: SetQuality
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
