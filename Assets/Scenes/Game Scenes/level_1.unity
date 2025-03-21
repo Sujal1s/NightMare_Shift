@@ -35712,6 +35712,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 1641031562}
   spotlight: {fileID: 1776507536}
+  volume: {fileID: 1541368225}
   isRealmShifted: 0
 --- !u!4 &1074350260
 Transform:
