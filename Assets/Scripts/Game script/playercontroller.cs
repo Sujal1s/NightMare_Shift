@@ -51,10 +51,14 @@ public class PlayerController : MonoBehaviour
         GroundCheck();
         Flip();
         UpdateAnimation();
+        jumpaction();
+
     }
 
     private void FixedUpdate()
     {
+        dashaction();
+
         if (isDashing)
             return;
 
@@ -78,9 +82,20 @@ public class PlayerController : MonoBehaviour
         ismoving = moveInput != Vector2.zero;
     }
 
-    public void OnJump(InputAction.CallbackContext context)
+
+
+    void dashaction()
     {
-        if (context.started)
+        if (Input.GetKeyDown(KeyCode.E) && canDash && CanUseAbilities() || (Input.GetKeyDown(KeyCode.JoystickButton2))&& canDash && CanUseAbilities() )
+        {
+            StartCoroutine(Dash());
+        }
+       
+    }
+
+    void jumpaction()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0))
         {
             if (isground)
             {
@@ -98,14 +113,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-        }
-    }
-
-    public void OnSprint(InputAction.CallbackContext context)
-    {
-        if (context.started && canDash && CanUseAbilities())
-        {
-            StartCoroutine(Dash());
         }
     }
 

@@ -6,6 +6,7 @@ public class CameraZoom : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
     private Coroutine zoomCoroutine;
+    [SerializeField] float zoom;
 
     private void Start()
     {
@@ -19,7 +20,7 @@ public class CameraZoom : MonoBehaviour
     {
         if ( other.CompareTag("Player") )
         {
-            StartZoomCoroutine(5.78f, 2f);
+            StartZoomCoroutine(zoom, 2f);
         }
         
     }
