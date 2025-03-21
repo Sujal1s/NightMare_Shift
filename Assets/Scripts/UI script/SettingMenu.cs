@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.Rendering;
 
 public class SettingMenu : MonoBehaviour
 {
@@ -59,13 +58,11 @@ public class SettingMenu : MonoBehaviour
         resolutionDropDown.RefreshShownValue();
         resolutionDropDown.onValueChanged.AddListener(SetResolution);
 
-        // Initialize fullscreen setting
         bool isFullscreen = PlayerPrefs.GetInt("Fullscreen", Screen.fullScreen ? 1 : 0) == 1;
         fullscreenToggle.isOn = isFullscreen;
         Screen.fullScreen = isFullscreen;
         fullscreenToggle.onValueChanged.AddListener(SetFullscreen);
 
-        // Initialize graphics quality settings
         qualityDropdown.ClearOptions();
         List<string> qualityLevels = new List<string>(QualitySettings.names);
         qualityDropdown.AddOptions(qualityLevels);
@@ -74,7 +71,6 @@ public class SettingMenu : MonoBehaviour
         qualityDropdown.value = savedQuality;
         qualityDropdown.onValueChanged.AddListener(SetQuality);
 
-        // Apply saved settings
         SetResolution(currentResolutionIndex);
         SetQuality(savedQuality);
 
@@ -83,8 +79,7 @@ public class SettingMenu : MonoBehaviour
 
     void Update()
     {
-        // Detect "B" button (Gamepad Button 1) or "Escape" key (Keyboard) to go back
-        if (Input.GetButtonDown("Cancel") || Input.GetButtonDown("Fire2"))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Cancel") || Input.GetKeyDown(KeyCode.JoystickButton1))
         {
             Back();
         }
@@ -100,7 +95,6 @@ public class SettingMenu : MonoBehaviour
             Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
             PlayerPrefs.SetInt("ResolutionIndex", resolutionIndex);
             PlayerPrefs.Save();
-            Debug.Log("Resolution Set: " + resolution.width + "x" + resolution.height);
         }
     }
 
@@ -109,10 +103,6 @@ public class SettingMenu : MonoBehaviour
         QualitySettings.SetQualityLevel(qualityIndex, true);
         PlayerPrefs.SetInt("GraphicsQuality", qualityIndex);
         PlayerPrefs.Save();
-
-        Debug.Log("Graphics Quality Set: " + QualitySettings.names[qualityIndex]);
-
-        ApplyGraphicsSettings(qualityIndex);
     }
 
     public void SetFullscreen(bool isFullscreen)
@@ -120,7 +110,6 @@ public class SettingMenu : MonoBehaviour
         Screen.fullScreen = isFullscreen;
         PlayerPrefs.SetInt("Fullscreen", isFullscreen ? 1 : 0);
         PlayerPrefs.Save();
-        Debug.Log("Fullscreen Set: " + isFullscreen);
     }
 
     public void SetVolume(float volume)
@@ -130,72 +119,26 @@ public class SettingMenu : MonoBehaviour
             audioMixer.SetFloat("volume", volume);
         }
     }
-
     public void Back()
     {
-        Debug.Log("Returning to: " + previousScene);
-        SceneManager.LoadScene(previousScene);
-    }
+        string lastScene = PlayerPrefs.GetString("PreviousScene", "MainMenu");
+        Debug.Log("Returning to: " + lastScene);
 
-    private void ApplyGraphicsSettings(int qualityIndex)
-    {
-        if (qualityIndex == 0) // "Very Low" setting
+        if (lastScene == "PauseMenu")
         {
-            Debug.Log("Applying VERY LOW graphics settings...");
-
-            // Disable all shadows
-            QualitySettings.shadows = ShadowQuality.Disable;
-
-            // Reduce texture quality to minimum
-            QualitySettings.globalTextureMipmapLimit = 2;
-
-            // Disable anti-aliasing
-            QualitySettings.antiAliasing = 0;
-
-            // Reduce render scale (makes everything pixelated)
-            ScalableBufferManager.ResizeBuffers(0.5f, 0.5f);
-
-            // Disable reflection probes & baked lighting
-            QualitySettings.realtimeReflectionProbes = false;
-            QualitySettings.softParticles = false;
-
-            // Disable all post-processing effects
-            foreach (var cam in Camera.allCameras)
-            {
-                if (cam.GetComponent<UnityEngine.Rendering.Volume>())
-                {
-                    cam.GetComponent<UnityEngine.Rendering.Volume>().enabled = false;
-                }
-            }
-
-            // Force sprite resolution to lowest possible
-            foreach (var renderer in FindObjectsOfType<SpriteRenderer>())
-            {
-                renderer.sprite.texture.filterMode = FilterMode.Point;
-            }
+            // If coming from Pause Menu, reload Pause Menu
+            SceneManager.LoadScene("PauseMenu");
+        }
+        else if (lastScene == "MainMenu")
+        {
+            // If coming from Main Menu, go back to Main Menu
+            SceneManager.LoadScene("MainMenu");
         }
         else
         {
-            // Restore default settings for higher graphics settings
-            QualitySettings.shadows = ShadowQuality.All;
-            QualitySettings.globalTextureMipmapLimit = 0;
-            QualitySettings.antiAliasing = 2;
-            ScalableBufferManager.ResizeBuffers(1f, 1f);
-            QualitySettings.realtimeReflectionProbes = true;
-            QualitySettings.softParticles = true;
-
-            foreach (var cam in Camera.allCameras)
-            {
-                if (cam.GetComponent<UnityEngine.Rendering.Volume>())
-                {
-                    cam.GetComponent<UnityEngine.Rendering.Volume>().enabled = true;
-                }
-            }
-
-            foreach (var renderer in FindObjectsOfType<SpriteRenderer>())
-            {
-                renderer.sprite.texture.filterMode = FilterMode.Bilinear;
-            }
+            // Otherwise, go back to the last recorded scene (game scene)
+            SceneManager.LoadScene(lastScene);
         }
     }
+
 }
