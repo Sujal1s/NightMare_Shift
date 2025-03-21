@@ -28,8 +28,12 @@ public class MainMenu : MonoBehaviour
 
     public void OpenSettings()
     {
-        MenuManager.LoadSceneAndRemember("SettingMenu");
+        PlayerPrefs.SetString("PreviousScene", "MainMenu");
+        PlayerPrefs.Save();
+
+        SceneManager.LoadScene("SettingMenu");
     }
+
 
     public void QuitGame()
     {

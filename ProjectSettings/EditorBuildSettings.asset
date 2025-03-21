@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/UI Scene/IntroScenes.unity
+    path: Assets/Scenes/Game Scenes/UI Scene/IntroScenes.unity
     guid: 06fe5e37df0f4144eb08d656a77d8fc5
   - enabled: 1
-    path: Assets/Scenes/UI Scene/MainMenu.unity
+    path: Assets/Scenes/Game Scenes/UI Scene/MainMenu.unity
     guid: cbda6ad2f747818439f2d90c9f04f901
   - enabled: 1
     path: Assets/Scenes/Game Scenes/level_1.unity
@@ -21,10 +21,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Game Scenes/temp game scene/test.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/UI Scene/SettingMenu.unity
-    guid: 8411a03effb0cc34da898142e2d46450
-  - enabled: 1
-    path: Assets/Scenes/UI Scene/PauseMenu.unity
+    path: Assets/Scenes/Game Scenes/UI Scene/PauseMenu.unity
     guid: d49e774a4f98325488c0b001f6f8c9a6
+  - enabled: 1
+    path: Assets/Scenes/Game Scenes/UI Scene/SettingMenu.unity
+    guid: 8411a03effb0cc34da898142e2d46450
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 94c96981bcc925d4598491e904b868d1, type: 2}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 035dc0df1aa8b4e41bd1a5d0a4c8cc38, type: 3}
