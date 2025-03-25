@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e052fc4d33ebe7e4da523a68ca087c1d
+guid: 6e913a11ea05da44ea22a06aa92544c3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,127 +123,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_0
+      name: End_door_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 5
-        width: 31
-        height: 51
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51e7dc355ddaae447961c90c39b2d318
-      internalID: -1916977772
+      spriteID: 8cc8c86691ae8b3469c80910a19d5895
+      internalID: 938824181
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_1
+      name: End_door_1
       rect:
         serializedVersion: 2
-        x: 79
-        y: 5
-        width: 31
-        height: 49
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc89d06fd61d6df489b6c4c60b7f7ff9
-      internalID: -1219334906
+      spriteID: 2b5e884e410a6ad4fb5449fc7f138318
+      internalID: -1227965550
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_2
+      name: End_door_2
       rect:
         serializedVersion: 2
-        x: 143
-        y: 4
-        width: 31
-        height: 49
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5163edd2559d5ad49b43ad48d698a831
-      internalID: 1974473732
+      spriteID: 9c0269fa5c072854ca90fbb2d1ee3c9c
+      internalID: 362821233
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_3
+      name: End_door_3
       rect:
         serializedVersion: 2
-        x: 207
-        y: 5
-        width: 31
-        height: 49
+        x: 192
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b6c241cbb0b5b2409c678e7487e62f5
-      internalID: -1900149286
+      spriteID: 57c1e70bee0f796499262db851236eea
+      internalID: 680885911
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_4
+      name: End_door_4
       rect:
         serializedVersion: 2
-        x: 271
-        y: 5
-        width: 31
-        height: 51
+        x: 256
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62192a4a1a7082b468a77903861729a7
-      internalID: -204011863
+      spriteID: d93b773335b6f3448b9fe2a923b29eca
+      internalID: 1952346848
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_5
+      name: End_door_5
       rect:
         serializedVersion: 2
-        x: 335
-        y: 5
-        width: 31
-        height: 51
+        x: 320
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95a4c21a9f1744c4db54e94c34f26dec
-      internalID: -2046857602
+      spriteID: 15f5f25d79e73d3459b0f7f7fbaea169
+      internalID: 39113492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: End_door_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 699528a0968b9a34783cd2faa62336a5
+      internalID: -655826314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: End_door_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a087a028dbc7b5049b56dff291f30a30
+      internalID: 1622413211
       vertices: []
       indices: 
       edges: []
@@ -259,12 +301,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      the game guard character-Sheet IDLE_0: -1916977772
-      the game guard character-Sheet IDLE_1: -1219334906
-      the game guard character-Sheet IDLE_2: 1974473732
-      the game guard character-Sheet IDLE_3: -1900149286
-      the game guard character-Sheet IDLE_4: -204011863
-      the game guard character-Sheet IDLE_5: -2046857602
+      End_door_0: 938824181
+      End_door_1: -1227965550
+      End_door_2: 362821233
+      End_door_3: 680885911
+      End_door_4: 1952346848
+      End_door_5: 39113492
+      End_door_6: -655826314
+      End_door_7: 1622413211
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

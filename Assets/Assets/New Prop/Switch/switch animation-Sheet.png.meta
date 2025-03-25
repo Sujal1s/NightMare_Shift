@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e052fc4d33ebe7e4da523a68ca087c1d
+guid: 5809a5b1537660147ac980d9b6895a49
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,10 +45,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_0
+      name: switch animation-Sheet_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 5
-        width: 31
-        height: 51
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51e7dc355ddaae447961c90c39b2d318
-      internalID: -1916977772
+      spriteID: 5684a7a1a93cdb44c8291e636a446dcb
+      internalID: -2144597903
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_1
+      name: switch animation-Sheet_1
       rect:
         serializedVersion: 2
-        x: 79
-        y: 5
-        width: 31
-        height: 49
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc89d06fd61d6df489b6c4c60b7f7ff9
-      internalID: -1219334906
+      spriteID: 9c15b7912731c3c4684e02240e881e59
+      internalID: 861754137
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_2
+      name: switch animation-Sheet_2
       rect:
         serializedVersion: 2
-        x: 143
-        y: 4
-        width: 31
-        height: 49
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5163edd2559d5ad49b43ad48d698a831
-      internalID: 1974473732
+      spriteID: 5e638b0a2811b1a4997dceb0e04e0383
+      internalID: 1274246344
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_3
+      name: switch animation-Sheet_3
       rect:
         serializedVersion: 2
-        x: 207
-        y: 5
-        width: 31
-        height: 49
+        x: 192
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b6c241cbb0b5b2409c678e7487e62f5
-      internalID: -1900149286
+      spriteID: ed45511b05b45e24fa831a09a34b6a33
+      internalID: 317617991
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_4
+      name: switch animation-Sheet_4
       rect:
         serializedVersion: 2
-        x: 271
-        y: 5
-        width: 31
-        height: 51
+        x: 256
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62192a4a1a7082b468a77903861729a7
-      internalID: -204011863
+      spriteID: 56493aa599a1ad849ae88de107ef9ca8
+      internalID: 1107641165
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_5
+      name: switch animation-Sheet_5
       rect:
         serializedVersion: 2
-        x: 335
-        y: 5
-        width: 31
-        height: 51
+        x: 320
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,8 +242,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95a4c21a9f1744c4db54e94c34f26dec
-      internalID: -2046857602
+      spriteID: 1741a6921692955498a76aff8283943c
+      internalID: -1145261239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: switch animation-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5e2103c6d4585f4cb0520d6f7b4c8dd
+      internalID: -2064823
       vertices: []
       indices: 
       edges: []
@@ -259,12 +280,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      the game guard character-Sheet IDLE_0: -1916977772
-      the game guard character-Sheet IDLE_1: -1219334906
-      the game guard character-Sheet IDLE_2: 1974473732
-      the game guard character-Sheet IDLE_3: -1900149286
-      the game guard character-Sheet IDLE_4: -204011863
-      the game guard character-Sheet IDLE_5: -2046857602
+      switch animation-Sheet_0: -2144597903
+      switch animation-Sheet_1: 861754137
+      switch animation-Sheet_2: 1274246344
+      switch animation-Sheet_3: 317617991
+      switch animation-Sheet_4: 1107641165
+      switch animation-Sheet_5: -1145261239
+      switch animation-Sheet_6: -2064823
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

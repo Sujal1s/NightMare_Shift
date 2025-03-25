@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e052fc4d33ebe7e4da523a68ca087c1d
+guid: 0f301a7d1d2b45e4dac16555b909617e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_0
+      name: A big pot and small pots_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 5
-        width: 31
-        height: 51
+        x: 10
+        y: 320
+        width: 280
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51e7dc355ddaae447961c90c39b2d318
-      internalID: -1916977772
+      spriteID: 2401e995d90001a47b3e98aa24df4fba
+      internalID: -598451074
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_1
+      name: A big pot and small pots_1
       rect:
         serializedVersion: 2
-        x: 79
-        y: 5
-        width: 31
-        height: 49
+        x: 410
+        y: 350
+        width: 160
+        height: 260
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc89d06fd61d6df489b6c4c60b7f7ff9
-      internalID: -1219334906
+      spriteID: 75b36d38d72f7224ea8025dade2de396
+      internalID: 2040093597
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_2
+      name: A big pot and small pots_2
       rect:
         serializedVersion: 2
-        x: 143
-        y: 4
-        width: 31
-        height: 49
+        x: 80
+        y: 0
+        width: 160
+        height: 260
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5163edd2559d5ad49b43ad48d698a831
-      internalID: 1974473732
+      spriteID: e3669d4ee8fd62648a80df7f6ceb5608
+      internalID: -2054817690
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_3
+      name: A big pot and small pots_3
       rect:
         serializedVersion: 2
-        x: 207
-        y: 5
-        width: 31
-        height: 49
+        x: 400
+        y: 80
+        width: 160
+        height: 190
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,50 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b6c241cbb0b5b2409c678e7487e62f5
-      internalID: -1900149286
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_4
-      rect:
-        serializedVersion: 2
-        x: 271
-        y: 5
-        width: 31
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 62192a4a1a7082b468a77903861729a7
-      internalID: -204011863
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_5
-      rect:
-        serializedVersion: 2
-        x: 335
-        y: 5
-        width: 31
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 95a4c21a9f1744c4db54e94c34f26dec
-      internalID: -2046857602
+      spriteID: 1499cf450a1b30948bf1f23988accb01
+      internalID: -1554107659
       vertices: []
       indices: 
       edges: []
@@ -259,12 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      the game guard character-Sheet IDLE_0: -1916977772
-      the game guard character-Sheet IDLE_1: -1219334906
-      the game guard character-Sheet IDLE_2: 1974473732
-      the game guard character-Sheet IDLE_3: -1900149286
-      the game guard character-Sheet IDLE_4: -204011863
-      the game guard character-Sheet IDLE_5: -2046857602
+      A big pot and small pots_0: -598451074
+      A big pot and small pots_1: 2040093597
+      A big pot and small pots_2: -2054817690
+      A big pot and small pots_3: -1554107659
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

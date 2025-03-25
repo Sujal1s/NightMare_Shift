@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e052fc4d33ebe7e4da523a68ca087c1d
+guid: 16ee6f13275eabb4f9f309e051a6ae6a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,127 +123,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_0
+      name: dash stationary-Sheet_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 5
-        width: 31
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.1865497, y: 0.50467837}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51e7dc355ddaae447961c90c39b2d318
-      internalID: -1916977772
+      spriteID: a4ffea4dfe592f04cb45882be5e06e5e
+      internalID: -3118033
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_1
+      name: dash stationary-Sheet_1
       rect:
         serializedVersion: 2
-        x: 79
-        y: 5
-        width: 31
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.29883015, y: 0.48596495}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc89d06fd61d6df489b6c4c60b7f7ff9
-      internalID: -1219334906
+      spriteID: 0df5316667076c8468409844d3966822
+      internalID: 1496982069
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_2
+      name: dash stationary-Sheet_2
       rect:
         serializedVersion: 2
-        x: 143
-        y: 4
-        width: 31
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.18888855, y: 0.49766088}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5163edd2559d5ad49b43ad48d698a831
-      internalID: 1974473732
+      spriteID: 7f88cf7b42a7a4b47abc92d0dc0437e6
+      internalID: -1162400839
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_3
+      name: dash stationary-Sheet_3
       rect:
         serializedVersion: 2
-        x: 207
-        y: 5
-        width: 31
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.17251444, y: 0.49298248}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b6c241cbb0b5b2409c678e7487e62f5
-      internalID: -1900149286
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_4
-      rect:
-        serializedVersion: 2
-        x: 271
-        y: 5
-        width: 31
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 62192a4a1a7082b468a77903861729a7
-      internalID: -204011863
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: the game guard character-Sheet IDLE_5
-      rect:
-        serializedVersion: 2
-        x: 335
-        y: 5
-        width: 31
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 95a4c21a9f1744c4db54e94c34f26dec
-      internalID: -2046857602
+      spriteID: 2ea9a738d3f9a354b92cd7759d452b89
+      internalID: 799172953
       vertices: []
       indices: 
       edges: []
@@ -259,12 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      the game guard character-Sheet IDLE_0: -1916977772
-      the game guard character-Sheet IDLE_1: -1219334906
-      the game guard character-Sheet IDLE_2: 1974473732
-      the game guard character-Sheet IDLE_3: -1900149286
-      the game guard character-Sheet IDLE_4: -204011863
-      the game guard character-Sheet IDLE_5: -2046857602
+      dash stationary-Sheet_0: -3118033
+      dash stationary-Sheet_1: 1496982069
+      dash stationary-Sheet_2: -1162400839
+      dash stationary-Sheet_3: 799172953
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
