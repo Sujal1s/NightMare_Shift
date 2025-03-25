@@ -51,14 +51,10 @@ public class PauseMenu : MonoBehaviour
     {
         Debug.Log("Loading PauseMenu Scene...");
 
-        // Save the current scene before pausing
         PlayerPrefs.SetString("PreviousScene", SceneManager.GetActiveScene().name);
         PlayerPrefs.Save();
 
-        // Load PauseMenu scene as additive (so the game scene stays loaded)
         SceneManager.LoadScene(pauseSceneName, LoadSceneMode.Additive);
-
-        // Ensure gamepad UI navigation works by setting the selected UI element
         StartCoroutine(SetPauseMenuFocus());
 
         Time.timeScale = 0f;

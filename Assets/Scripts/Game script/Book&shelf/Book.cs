@@ -13,7 +13,7 @@ public class Book : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.JoystickButton3)  && collsion)
+        if (Input.GetKeyDown(KeyCode.JoystickButton3)  && collsion || Input.GetKeyDown(KeyCode.E)  && collsion)
         {
             book++;
             Debug.Log(book);

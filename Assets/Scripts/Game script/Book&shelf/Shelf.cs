@@ -9,7 +9,7 @@ public class Shelf : MonoBehaviour
     [SerializeField] private Book Target;
     [SerializeField] private GameObject shelf;
     [SerializeField] private float speed = 3f;
-    private Vector3 targetPosition = new Vector3(209.56f, -4.905f, 0);
+    private Vector3 targetPosition = new Vector3(209.69f, -4.137f, 0);
     private bool hasMoved = false;
     private bool shouldMove = false;
 

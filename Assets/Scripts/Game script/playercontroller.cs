@@ -72,6 +72,8 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("_ismoving", ismoving);
             animator.SetBool("_isjump", isground);
+            animator.SetBool("_isjump", isground);
+            animator.SetBool("_isdashing" , isDashing);
 
         }
     }
@@ -147,6 +149,7 @@ public class PlayerController : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
+        animator.SetBool("_isDashing", true);
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
 
@@ -162,6 +165,7 @@ public class PlayerController : MonoBehaviour
         tr.emitting = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
+        animator.SetBool("_isDashing", false);
 
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
