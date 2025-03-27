@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class DialogueSystem : MonoBehaviour
 {
     public GameObject dialboxcanvas;
+    [SerializeField] private GameObject player;
     [SerializeField] private TextMeshProUGUI speakertext;
     [SerializeField] private TextMeshProUGUI dialougeText;
     [SerializeField] private Image potraiteImage;
@@ -17,7 +18,7 @@ public class DialogueSystem : MonoBehaviour
     private Animator animator;
 
 
-    private int step;
+    public int step;
     private bool dialougeactive;
 
     private void Awake()
@@ -28,7 +29,7 @@ public class DialogueSystem : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.JoystickButton3) || Input.GetKeyDown(KeyCode.E) && dialougeactive)
+        if (Input.GetKeyDown(KeyCode.JoystickButton3)&& dialougeactive || Input.GetKeyDown(KeyCode.E) && dialougeactive)
         {
             if (step >= speaker.Length)
             {
@@ -43,6 +44,19 @@ public class DialogueSystem : MonoBehaviour
                 dialougeText.text = dialougeWord[step];
                 potraiteImage.sprite = potrait[step];
                 step += 1;
+            }
+        }
+
+        if ( step > 6 )
+        {
+            PlayerController playerScript = player.GetComponent<PlayerController>();
+            if (playerScript != null)
+            {
+                playerScript.enabled = !playerScript.enabled;
+            }
+            else
+            {
+                
             }
         }
     }
@@ -63,9 +77,5 @@ public class DialogueSystem : MonoBehaviour
         animator.SetTrigger("PlayDisappear");
     }
 
-    private IEnumerator DestroyDelay()
-    {
-        yield return new WaitForSeconds(2);
-        Destroy(gameObject);
-    }
+
 }

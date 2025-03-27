@@ -57,6 +57,8 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(pauseSceneName, LoadSceneMode.Additive);
 
         // Ensure UI input is focused on the menu
+
+
         StartCoroutine(SetPauseMenuFocus());
     }
 
