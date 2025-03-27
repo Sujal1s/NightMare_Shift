@@ -1,7 +1,8 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Collections.Generic;
+using System.Collections;
+
+
 public class PlayerController : MonoBehaviour
 {
     public float speed;
@@ -13,8 +14,6 @@ public class PlayerController : MonoBehaviour
     public float dashingCooldown;
 
     private Vector2 moveInput;
-    private Vector2 jumpInput;
-
     private bool ismoving;
     private bool canDash = true;
     private bool isDashing;
@@ -22,49 +21,43 @@ public class PlayerController : MonoBehaviour
     public bool isground { get; private set; }
     private bool isFacingRight = true;
 
-
     private Rigidbody2D rb;
     private Animator animator;
     public Transform groundcheck;
     public LayerMask groundLayer;
     public TrailRenderer tr;
     public RealmShift realmShift;
-    [SerializeField] private PolygonCollider2D polygonCollider;
-    [SerializeField] private SpriteRenderer spriteRenderer;
-
+    private PlayerInput playerInput;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        polygonCollider = GetComponent<PolygonCollider2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        
-
+        playerInput = GetComponent<PlayerInput>(); // Get the PlayerInput component
     }
 
     private void Update()
     {
-        Vector3 currentPosition = transform.position;
-        currentPosition.z = 2.91f;  // Lock Z-axis to 1.16
-        transform.position = currentPosition;
-        GroundCheck();
-        Flip();
-        UpdateAnimation();
-        jumpaction();
-
+        if (playerInput.enabled) // Only allow input if player input is enabled
+        {
+            GroundCheck();
+            Flip();
+            UpdateAnimation();
+            jumpaction();
+        }
     }
 
     private void FixedUpdate()
     {
-        dashaction();
-
         if (isDashing)
             return;
 
-        rb.velocity = new Vector2(moveInput.x * speed, rb.velocity.y);
+        if (playerInput.enabled) // Only allow movement if player input is enabled
+        {
+            rb.velocity = new Vector2(moveInput.x * speed, rb.velocity.y);
+            dashaction();
+        }
     }
-
 
     private void UpdateAnimation()
     {
@@ -72,7 +65,6 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("_ismoving", ismoving);
             animator.SetBool("_isjump", isground);
-
         }
     }
 
@@ -82,15 +74,12 @@ public class PlayerController : MonoBehaviour
         ismoving = moveInput != Vector2.zero;
     }
 
-
-
     void dashaction()
     {
-        if (Input.GetKeyDown(KeyCode.E) && canDash && CanUseAbilities() || (Input.GetKeyDown(KeyCode.JoystickButton2))&& canDash && CanUseAbilities() )
+        if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton2)) && canDash && CanUseAbilities())
         {
             StartCoroutine(Dash());
         }
-       
     }
 
     void jumpaction()
@@ -100,19 +89,16 @@ public class PlayerController : MonoBehaviour
             if (isground)
             {
                 jump();
-
                 isjump = false;
             }
             else
             {
-
                 if (!isjump && CanUseAbilities())
                 {
                     daublejump();
                     isjump = true;
                 }
             }
-
         }
     }
 
@@ -129,7 +115,6 @@ public class PlayerController : MonoBehaviour
     private void GroundCheck()
     {
         isground = Physics2D.OverlapCircle(groundcheck.position, 0.2f, groundLayer);
-
     }
 
     private void Flip()
@@ -171,19 +156,13 @@ public class PlayerController : MonoBehaviour
     {
         return realmShift != null && realmShift.isRealmShifted;
     }
-  
-    /*void UpdateColliderShape()
-    {
-        // Get the current sprite from the SpriteRenderer
-        Sprite currentSprite = spriteRenderer.sprite;
 
-        // Clear the current path and set the new path based on the current sprite
-        polygonCollider.pathCount = currentSprite.GetPhysicsShapeCount();
-        for (int i = 0; i < polygonCollider.pathCount; i++)
+    // **Function to Enable/Disable Player Input**
+    public void SetPlayerInputActive(bool isActive)
+    {
+        if (playerInput != null)
         {
-            var path = new List<Vector2>();
-            currentSprite.GetPhysicsShape(i, path);
-            polygonCollider.SetPath(i, path.ToArray());
+            playerInput.enabled = isActive;
         }
-    }*/
-}        
+    }
+}

@@ -6,21 +6,19 @@ using UnityEngine.EventSystems;
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
-    private string pauseSceneName = "PauseMenu"; // Ensure this matches the actual scene name
+    private string pauseSceneName = "PauseMenu";
     private string previousScene;
 
-    public GameObject firstPauseMenuButton; // Assign in the Inspector (e.g., "Resume" button)
+    public GameObject firstPauseMenuButton; // Assign in Inspector (e.g., "Resume" button)
 
     private void Start()
     {
-        // Load the previous scene from PlayerPrefs (default to Level1 if not set)
         previousScene = PlayerPrefs.GetString("PreviousScene", "Level1");
     }
 
     private void Update()
     {
-        // Detect "Escape" (Keyboard) OR "Select" (Gamepad) to toggle pause
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Select") || Input.GetKeyDown(KeyCode.JoystickButton7))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Start") || Input.GetKeyDown(KeyCode.JoystickButton7))
         {
             if (GameIsPaused)
                 Resume();
@@ -35,15 +33,12 @@ public class PauseMenu : MonoBehaviour
         {
             SceneManager.UnloadSceneAsync(pauseSceneName);
         }
-        else
-        {
-            Debug.LogWarning("PauseMenu scene is not loaded, cannot unload!");
-        }
 
+        // Resume game time
         Time.timeScale = 1f;
         GameIsPaused = false;
 
-        // Clear UI selection to prevent focus issues
+        // Clear UI selection to prevent conflicts
         EventSystem.current.SetSelectedGameObject(null);
     }
 
@@ -51,29 +46,29 @@ public class PauseMenu : MonoBehaviour
     {
         Debug.Log("Loading PauseMenu Scene...");
 
-        // Save the current scene before pausing
         PlayerPrefs.SetString("PreviousScene", SceneManager.GetActiveScene().name);
         PlayerPrefs.Save();
 
-        // Load PauseMenu scene as additive (so the game scene stays loaded)
-        SceneManager.LoadScene(pauseSceneName, LoadSceneMode.Additive);
-
-        // Ensure gamepad UI navigation works by setting the selected UI element
-        StartCoroutine(SetPauseMenuFocus());
-
+        // Stop game time
         Time.timeScale = 0f;
         GameIsPaused = true;
+
+        // Load Pause Menu as an overlay
+        SceneManager.LoadScene(pauseSceneName, LoadSceneMode.Additive);
+
+        // Ensure UI input is focused on the menu
+        StartCoroutine(SetPauseMenuFocus());
     }
 
     private IEnumerator SetPauseMenuFocus()
     {
-        yield return new WaitForSecondsRealtime(0.1f); // Small delay ensures UI is ready
-        EventSystem.current.SetSelectedGameObject(firstPauseMenuButton);
+        yield return new WaitForSecondsRealtime(0.1f); // Short delay to ensure UI is ready
+        EventSystem.current.SetSelectedGameObject(null); // Clear selection
+        EventSystem.current.SetSelectedGameObject(firstPauseMenuButton); // Set first button
     }
 
     public void OpenSettings()
     {
-        // Save the current scene before opening settings
         PlayerPrefs.SetString("PreviousScene", "PauseMenu");
         PlayerPrefs.Save();
 
@@ -86,7 +81,8 @@ public class PauseMenu : MonoBehaviour
 
         if (lastScene == "PauseMenu")
         {
-            Pause(); // Go back to Pause Menu
+            SceneManager.UnloadSceneAsync("SettingMenu");
+            StartCoroutine(SetPauseMenuFocus()); // Fix controller navigation
         }
         else
         {
