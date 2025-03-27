@@ -119,6 +119,7 @@ public class SettingMenu : MonoBehaviour
             audioMixer.SetFloat("volume", volume);
         }
     }
+
     public void Back()
     {
         string lastScene = PlayerPrefs.GetString("PreviousScene", "MainMenu");
@@ -126,19 +127,13 @@ public class SettingMenu : MonoBehaviour
 
         if (lastScene == "PauseMenu")
         {
-            // If coming from Pause Menu, reload Pause Menu
-            SceneManager.LoadScene("PauseMenu");
-        }
-        else if (lastScene == "MainMenu")
-        {
-            // If coming from Main Menu, go back to Main Menu
-            SceneManager.LoadScene("MainMenu");
+            // Instead of reloading the scene, we simply return to the Pause Menu
+            SceneManager.UnloadSceneAsync("SettingMenu");
+            Time.timeScale = 0f; // Keep the game paused
         }
         else
         {
-            // Otherwise, go back to the last recorded scene (game scene)
             SceneManager.LoadScene(lastScene);
         }
     }
-
 }

@@ -5,16 +5,17 @@ using System.Collections;
 
 public class IntroManager : MonoBehaviour
 {
-    public Text gameTitleText; 
-    public Text developerText; 
-    public Text artText;       
+    public Text gameTitleText;
+    public Text developerText;
+    public Text artText;
 
-    public float zoomDuration = 2f;  
-    public float stayDuration = 1f;  
-    public float fadeDuration = 2f; 
-    public Vector3 startScale = new Vector3(0.5f, 0.5f, 1);  
+    public float zoomDuration = 2f;
+    public float stayDuration = 1f;
+    public float fadeDuration = 2f;
+    public Vector3 startScale = new Vector3(0.5f, 0.5f, 1);
     public Vector3 finalScale = new Vector3(1.2f, 1.2f, 1);
-    public string nextSceneName = "MainMenu";  
+
+    private string nextSceneName = "Controller";  // Changed to load Controller scene
 
     void Start()
     {
@@ -23,34 +24,37 @@ public class IntroManager : MonoBehaviour
 
     IEnumerator PlayIntroSequence()
     {
-        
-        yield return StartCoroutine(ZoomInAndDisappear(gameTitleText, true));
+        // Check if text objects are assigned
+        if (gameTitleText != null)
+            yield return StartCoroutine(ZoomInAndDisappear(gameTitleText, true));
 
-        
-        yield return StartCoroutine(ZoomInAndDisappear(developerText, false));
+        if (developerText != null)
+            yield return StartCoroutine(ZoomInAndDisappear(developerText, false));
 
-     
-        yield return StartCoroutine(ZoomInAndDisappear(artText, false));
+        if (artText != null)
+            yield return StartCoroutine(ZoomInAndDisappear(artText, false));
 
-        
+        // Load the Controller Scene after the intro ends
         SceneManager.LoadScene(nextSceneName);
     }
 
     IEnumerator ZoomInAndDisappear(Text text, bool shouldZoom)
     {
+        if (text == null) yield break;  // Prevent errors if text is missing
+
         text.gameObject.SetActive(true);
         Color color = text.color;
-        color.a = 0;  
+        color.a = 0;
         text.color = color;
 
         if (shouldZoom)
         {
-            text.transform.localScale = startScale; 
+            text.transform.localScale = startScale;
         }
 
         float elapsedTime = 0f;
 
-        
+        // Zoom and fade-in effect
         while (elapsedTime < zoomDuration)
         {
             elapsedTime += Time.deltaTime;
@@ -70,12 +74,11 @@ public class IntroManager : MonoBehaviour
         text.transform.localScale = shouldZoom ? finalScale : text.transform.localScale;
         text.color = new Color(color.r, color.g, color.b, 1);
 
-       
         yield return new WaitForSeconds(stayDuration);
 
         elapsedTime = 0f;
 
-        
+        // Fade-out effect
         while (elapsedTime < fadeDuration)
         {
             elapsedTime += Time.deltaTime;
