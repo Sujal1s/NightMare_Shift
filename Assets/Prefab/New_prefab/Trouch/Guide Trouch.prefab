@@ -5093,7 +5093,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 371079346411075672}
-  - component: {fileID: 5819842983134983705}
   m_Layer: 0
   m_Name: Lit
   m_TagString: Untagged
@@ -5120,19 +5119,6 @@ Transform:
   - {fileID: 6123619353213098900}
   m_Father: {fileID: 320649369016863354}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5819842983134983705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7211626783272794491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e054a1500f6664b42973d6c1a885482a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzle: []
 --- !u!1 &7234612612553887284
 GameObject:
   m_ObjectHideFlags: 0
