@@ -1,8 +1,8 @@
+
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Collections;
-
-
+using System.Collections.Generic;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public float dashingCooldown;
 
     private Vector2 moveInput;
+    private Vector2 jumpInput;
+
     private bool ismoving;
     private bool canDash = true;
     private bool isDashing;
@@ -21,52 +23,92 @@ public class PlayerController : MonoBehaviour
     public bool isground { get; private set; }
     private bool isFacingRight = true;
 
+
     private Rigidbody2D rb;
     private Animator animator;
     public Transform groundcheck;
     public LayerMask groundLayer;
     public TrailRenderer tr;
     public RealmShift realmShift;
-    private PlayerInput playerInput;
+    [SerializeField] private PolygonCollider2D polygonCollider;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    
+    private PlayerInputActions playerInputActions;
+    private InputAction moveAction;
+    private InputAction jumpAction;
+    private InputAction dashAction;
 
+    public int checkpointID, coinCount;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        playerInput = GetComponent<PlayerInput>(); // Get the PlayerInput component
+        polygonCollider = GetComponent<PolygonCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        playerInputActions = new PlayerInputActions();
+        
+
+    }
+    private void OnEnable()
+    {
+        // Enable the input actions
+        moveAction = playerInputActions.Player.Move;
+        jumpAction = playerInputActions.Player.Jump;
+        dashAction = playerInputActions.Player.Dash;
+
+        moveAction.Enable();
+        jumpAction.Enable();
+        dashAction.Enable();
+
+        // Add callbacks
+  
+        jumpAction.performed += OnJump;
+    
+        dashAction.performed += OnDash;
+    }
+
+    private void OnDisable()
+    {
+        // Disable the input actions and remove callbacks
+        jumpAction.performed -= OnJump;
+        dashAction.performed -= OnDash;
+
+        moveAction.Disable();
+        jumpAction.Disable();
+        dashAction.Disable();
     }
 
     private void Update()
     {
-        if (playerInput.enabled) // Only allow input if player input is enabled
-        {
-            GroundCheck();
-            Flip();
-            UpdateAnimation();
-            jumpaction();
-        }
+        Vector3 currentPosition = transform.position;
+        currentPosition.z = 2.91f;  // Lock Z-axis to 1.16
+        transform.position = currentPosition;
+        GroundCheck();
+        Flip();
+        UpdateAnimation();
+ 
+
     }
 
     private void FixedUpdate()
     {
+
+
         if (isDashing)
             return;
 
-        if (playerInput.enabled) // Only allow movement if player input is enabled
-        {
-            rb.velocity = new Vector2(moveInput.x * speed, rb.velocity.y);
-            dashaction();
-        }
+        rb.velocity = new Vector2(moveInput.x * speed, rb.velocity.y);
     }
+
 
     private void UpdateAnimation()
     {
         if (animator != null)
         {
-
+            animator.SetBool("_ismoving", ismoving);
+            animator.SetBool("_isjump", isground);
             animator.SetBool("_isjump", isground);
             animator.SetBool("_isdashing" , isDashing);
-
 
         }
     }
@@ -77,32 +119,37 @@ public class PlayerController : MonoBehaviour
         ismoving = moveInput != Vector2.zero;
     }
 
-    void dashaction()
+
+
+    private void OnDash(InputAction.CallbackContext context)
     {
-        if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton2)) && canDash && CanUseAbilities())
+        if (canDash && CanUseAbilities())
         {
             StartCoroutine(Dash());
         }
     }
 
-    void jumpaction()
+    private void OnJump(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0))
-        {
+       
+        
             if (isground)
             {
                 jump();
+
                 isjump = false;
             }
             else
             {
+
                 if (!isjump && CanUseAbilities())
                 {
                     daublejump();
                     isjump = true;
                 }
             }
-        }
+
+        
     }
 
     private void jump()
@@ -118,6 +165,7 @@ public class PlayerController : MonoBehaviour
     private void GroundCheck()
     {
         isground = Physics2D.OverlapCircle(groundcheck.position, 0.2f, groundLayer);
+
     }
 
     private void Flip()
@@ -135,7 +183,7 @@ public class PlayerController : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
-        animator.SetBool("_isDashing", true);
+        animator.SetBool("_isdashing", true);
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
 
@@ -151,7 +199,7 @@ public class PlayerController : MonoBehaviour
         tr.emitting = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
-        animator.SetBool("_isDashing", false);
+        animator.SetBool("_isdashing", false);
 
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
@@ -161,13 +209,19 @@ public class PlayerController : MonoBehaviour
     {
         return realmShift != null && realmShift.isRealmShifted;
     }
-
-    // **Function to Enable/Disable Player Input**
-    public void SetPlayerInputActive(bool isActive)
+  
+    /*void UpdateColliderShape()
     {
-        if (playerInput != null)
+        // Get the current sprite from the SpriteRenderer
+        Sprite currentSprite = spriteRenderer.sprite;
+
+        // Clear the current path and set the new path based on the current sprite
+        polygonCollider.pathCount = currentSprite.GetPhysicsShapeCount();
+        for (int i = 0; i < polygonCollider.pathCount; i++)
         {
-            playerInput.enabled = isActive;
+            var path = new List<Vector2>();
+            currentSprite.GetPhysicsShape(i, path);
+            polygonCollider.SetPath(i, path.ToArray());
         }
-    }
-}
+    }*/
+}        

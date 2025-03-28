@@ -5,6 +5,7 @@ using UnityEngine;
 public class checkpoint : MonoBehaviour
 {
    [SerializeField] private GameObject lit;
+   
 
    public bool checkpointrange = false;
 
@@ -14,13 +15,16 @@ public class checkpoint : MonoBehaviour
      
       lit.SetActive(false);
      
+     
    }
 
    private void OnTriggerEnter2D(Collider2D other)
    {
       checkpointrange = true;
       StartCoroutine(checkpoint_lit());
+      
    }
+ 
 
    IEnumerator checkpoint_lit()
    {
