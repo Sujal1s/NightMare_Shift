@@ -4,10 +4,12 @@ using UnityEngine;
 public class SaveManager : MonoBehaviour
 {
     private static string saveFilePath => Path.Combine(Application.persistentDataPath, "gamesave.json");
-
+    
     // Save the game state
     public static void SaveGame(GameSaveData data)
     {
+        
+        
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(saveFilePath, json);
         Debug.Log("Game Saved to: " + saveFilePath);

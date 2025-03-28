@@ -34,7 +34,5 @@ public class PlayerProgress : MonoBehaviour
         GameSaveData data = SaveManager.LoadGame();
         currentCheckpoint = data.checkpointID;
         coins = data.coinCount;
-        // Here you could also reposition your character at the correct checkpoint
-        // or load a specific scene using UnityEngine.SceneManagement.
     }
 }
