@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24b4329ca40744f42a8c924cf474a72c
-      internalID: 1834814085
+      spriteID: 4c0473fbba19e894db4121f40cfd7961
+      internalID: 1612490198
       vertices: []
       indices: 
       edges: []
@@ -158,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c358ccccf4110b44489640ae071be700
-      internalID: 1911697911
+      spriteID: 8ed183d85d3e7bb4782f730a9b334918
+      internalID: 511263711
       vertices: []
       indices: 
       edges: []
@@ -179,8 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99e7ba93d14490c4e967e857c494017a
-      internalID: -1745605406
+      spriteID: 12ad40f90927c1b40894653627fc95bf
+      internalID: 501652791
       vertices: []
       indices: 
       edges: []
@@ -200,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53b23c81fa96cdd40b517b00d04d59f5
-      internalID: 243267123
+      spriteID: 5426cbfbcaff8b14d98c7f2d7d9059e7
+      internalID: 1623879443
       vertices: []
       indices: 
       edges: []
@@ -221,8 +221,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd3976bb0d0a2a54aa49b7f669677be5
-      internalID: 2136883903
+      spriteID: aa7f30b237eab214cbeafb4a97b57978
+      internalID: 2065695956
       vertices: []
       indices: 
       edges: []
@@ -242,8 +242,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b34b26edaec386541b094683c2dc1d05
-      internalID: -1313443060
+      spriteID: 6509e2c80f7e02348bb2ab2b7b55e6ed
+      internalID: -324312287
       vertices: []
       indices: 
       edges: []
@@ -259,12 +259,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      bunch of books_0: 1834814085
-      bunch of books_1: 1911697911
-      bunch of books_2: -1745605406
-      bunch of books_3: 243267123
-      bunch of books_4: 2136883903
-      bunch of books_5: -1313443060
+      bunch of books_0: 1612490198
+      bunch of books_1: 511263711
+      bunch of books_2: 501652791
+      bunch of books_3: 1623879443
+      bunch of books_4: 2065695956
+      bunch of books_5: -324312287
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
