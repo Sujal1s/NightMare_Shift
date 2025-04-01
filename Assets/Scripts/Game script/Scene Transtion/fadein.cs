@@ -14,6 +14,7 @@ public class fadein : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         StartCoroutine(Fade());
+        
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -27,6 +28,7 @@ public class fadein : MonoBehaviour
     {
         yield return new WaitForSeconds(FadeDealy);
         animator.SetBool("On", true);
+        
     }
     
 }
