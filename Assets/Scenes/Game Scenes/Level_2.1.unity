@@ -14434,8 +14434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1172608700}
-  Player: {fileID: 1177935691}
-  spwanpoint: {fileID: 0}
+  FadeDealy: 0.5
 --- !u!1 &548765594
 GameObject:
   m_ObjectHideFlags: 0
@@ -14523,7 +14522,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 548765594}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfa11cfe65b7c8d428bd793dce9fcc2a, type: 3}
+  m_Script: {fileID: 11500000, guid: c99af23b51362a9488b72536a626f185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &899897072
@@ -14654,11 +14653,6 @@ Animator:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2436723491411860753, guid: 16fdaa0164549314b97fdeec31190bda, type: 3}
   m_PrefabInstance: {fileID: 1898111887}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1283439400 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1234305800642018624, guid: f8a68f83e31bf514d9cee2745dbba230, type: 3}
-  m_PrefabInstance: {fileID: 1321724312}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1321724312
 PrefabInstance:
@@ -16016,8 +16010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1172608700}
-  Player: {fileID: 1283439400}
-  spwanpoint: {fileID: 0}
+  FadeDealy: 0.5
 --- !u!1 &1641031560
 GameObject:
   m_ObjectHideFlags: 0

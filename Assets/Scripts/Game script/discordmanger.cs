@@ -28,7 +28,7 @@ public class discordmanger : MonoBehaviour
             State = "At Dungeon",
             Details = "Exploring dark world",
             Timestamps =
-            {
+            {   
                 Start = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
                
             }
