@@ -15,7 +15,7 @@ public class IntroManager : MonoBehaviour
     public Vector3 startScale = new Vector3(0.5f, 0.5f, 1);
     public Vector3 finalScale = new Vector3(1.2f, 1.2f, 1);
 
-    private string nextSceneName = "Controller";  // Changed to load Controller scene
+    /*private string nextSceneName = "Controller"; hold till game finsh*/  // Changed to load Controller scene
 
     void Start()
     {
@@ -34,8 +34,14 @@ public class IntroManager : MonoBehaviour
         if (artText != null)
             yield return StartCoroutine(ZoomInAndDisappear(artText, false));
 
-        // Load the Controller Scene after the intro ends
-        SceneManager.LoadScene(nextSceneName);
+        /*// Load the Controller Scene after the intro ends
+        SceneManager.LoadScene(nextSceneName);*/
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+            
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
     }
 
     IEnumerator ZoomInAndDisappear(Text text, bool shouldZoom)
