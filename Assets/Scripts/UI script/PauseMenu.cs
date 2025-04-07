@@ -57,16 +57,14 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(pauseSceneName, LoadSceneMode.Additive);
 
         // Ensure UI input is focused on the menu
-
-
         StartCoroutine(SetPauseMenuFocus());
     }
 
     private IEnumerator SetPauseMenuFocus()
     {
-        yield return new WaitForSecondsRealtime(0.1f); // Short delay to ensure UI is ready
-        EventSystem.current.SetSelectedGameObject(null); // Clear selection
-        EventSystem.current.SetSelectedGameObject(firstPauseMenuButton); // Set first button
+        yield return new WaitForSecondsRealtime(0.1f); 
+        EventSystem.current.SetSelectedGameObject(null); 
+        EventSystem.current.SetSelectedGameObject(firstPauseMenuButton); 
     }
 
     public void OpenSettings()
@@ -84,7 +82,7 @@ public class PauseMenu : MonoBehaviour
         if (lastScene == "PauseMenu")
         {
             SceneManager.UnloadSceneAsync("SettingMenu");
-            StartCoroutine(SetPauseMenuFocus()); // Fix controller navigation
+            StartCoroutine(SetPauseMenuFocus()); 
         }
         else
         {

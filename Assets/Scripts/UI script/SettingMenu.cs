@@ -24,9 +24,9 @@ public class SettingMenu : MonoBehaviour
 
     void Start()
     {
-        previousScene = PlayerPrefs.GetString("PreviousScene", "MainMenu"); // Load previous scene
+        previousScene = PlayerPrefs.GetString("PreviousScene", "MainMenu");
 
-        // Initialize resolution settings
+   
         resolutionDropDown.ClearOptions();
         List<string> resolutionOptions = new List<string>();
 
@@ -127,9 +127,9 @@ public class SettingMenu : MonoBehaviour
 
         if (lastScene == "PauseMenu")
         {
-            // Instead of reloading the scene, we simply return to the Pause Menu
+      
             SceneManager.UnloadSceneAsync("SettingMenu");
-            Time.timeScale = 0f; // Keep the game paused
+            Time.timeScale = 0f;
         }
         else
         {
