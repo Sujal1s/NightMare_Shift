@@ -13,7 +13,11 @@ public class fadein : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        StartCoroutine(Fade());
+        if (other.CompareTag("Player"))
+        {
+            StartCoroutine(Fade());
+        }
+       
         
     }
 
