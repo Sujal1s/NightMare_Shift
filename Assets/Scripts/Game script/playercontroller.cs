@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PolygonCollider2D polygonCollider;
     [SerializeField] private SpriteRenderer spriteRenderer;
     
+    public ParticleSystem ps; 
+    
     private PlayerInputActions playerInputActions;
     private InputAction moveAction;
     private InputAction jumpAction;
@@ -46,7 +48,8 @@ public class PlayerController : MonoBehaviour
         polygonCollider = GetComponent<PolygonCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerInputActions = new PlayerInputActions();
-        
+        ps = GetComponentInChildren<ParticleSystem>();
+
 
     }
     private void OnEnable()
@@ -86,6 +89,9 @@ public class PlayerController : MonoBehaviour
         GroundCheck();
         Flip();
         UpdateAnimation();
+        
+        
+        
  
 
     }
@@ -93,7 +99,14 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
 
-
+        if (isground && ismoving)
+        {
+            ps.Play();
+        }
+        else
+        {
+            ps.Stop();
+        }
         if (isDashing)
             return;
 
