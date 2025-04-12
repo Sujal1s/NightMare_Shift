@@ -20171,6 +20171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fade out
       objectReference: {fileID: 0}
+    - target: {fileID: 4829098613955916905, guid: d464d93ed115c6a4c8ff96f1e64d33a4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20193,7 +20197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3782860732399684649, guid: 8570971620248e34e8cd90cbd72e5e60, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5089004703057564754, guid: 8570971620248e34e8cd90cbd72e5e60, type: 3}
       propertyPath: m_AnchoredPosition.x
