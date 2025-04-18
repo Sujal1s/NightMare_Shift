@@ -160,7 +160,6 @@ GameObject:
   - component: {fileID: 4866305023699075551}
   - component: {fileID: 4345216429196813766}
   - component: {fileID: 129793139147534707}
-  - component: {fileID: 8595715668658675553}
   m_Layer: 0
   m_Name: Main_Player
   m_TagString: Player
@@ -467,20 +466,6 @@ MonoBehaviour:
   ps: {fileID: 0}
   checkpointID: 0
   coinCount: 0
---- !u!114 &8595715668658675553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2436723491411860753}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b68f71c5c284e8d4e968d3eb52833e55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentCheckpoint: 0
-  coins: 0
 --- !u!1 &2701461201529030931
 GameObject:
   m_ObjectHideFlags: 0
