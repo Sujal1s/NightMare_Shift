@@ -16,6 +16,7 @@ namespace Cainos.PixelArtPlatformer_Dungeon
       public SpriteRenderer spriteRenderer;
       public Sprite spriteOpened; 
       public Sprite spriteClosed;
+      [SerializeField] Shelf shelf;
 
 
         private Animator Animator
@@ -80,8 +81,12 @@ namespace Cainos.PixelArtPlatformer_Dungeon
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Open();
-            StartCoroutine(ChangeSceneAfterDelay(3f));
+            if (shelf.hasMoved)
+            {
+                Open();
+                StartCoroutine(ChangeSceneAfterDelay(1f));
+            }
+           
         }
 
         private IEnumerator ChangeSceneAfterDelay(float delay)
