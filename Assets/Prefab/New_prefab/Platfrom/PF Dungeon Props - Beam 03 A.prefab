@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7292622582502913521}
   - component: {fileID: 8348816833891316900}
   - component: {fileID: 8164451347753271652}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PF Dungeon Props - Beam 03 A
   m_TagString: Untagged
   m_Icon: {fileID: 0}

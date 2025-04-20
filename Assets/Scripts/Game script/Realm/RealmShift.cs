@@ -56,7 +56,7 @@ public class RealmShift : MonoBehaviour
         }
         else
         {
-            light.intensity = 0.45f;
+            light.intensity = 0.67f;
             spotlight.intensity = 0f;   
             vignette.intensity.value = 0.382f;
             isRealmShifted = false;
