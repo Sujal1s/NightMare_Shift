@@ -10,19 +10,18 @@ public class Task_HUD : MonoBehaviour
     [Header("Player")]
     [SerializeField] Transform Playertransfomation;
 
-    [SerializeField] Animator taskanimator;
     [Header("Task 1")]
     [SerializeField] TextMeshProUGUI Task1Text;
     [SerializeField] RawImage Task1image;
     [SerializeField] Shelf shelf;
 
     [Header("book ")]
-    [SerializeField] TextMeshProUGUI bookPuzzleText;
+    [SerializeField] TextMeshProUGUI task2Text;
     [SerializeField] RawImage Task2image;
     [SerializeField] Book book;
 
     [Header("shelf")]
-    [SerializeField] TextMeshProUGUI shelfText;
+    [SerializeField] TextMeshProUGUI task3Text;
     [SerializeField] RawImage Task3image;
 
     [SerializeField] GameObject Book;
@@ -31,9 +30,8 @@ public class Task_HUD : MonoBehaviour
 
     void Start()
     {
-        shelfText.enabled = false;
-        Task3image.enabled = false;
         Book.SetActive(false);
+        taskhide();
     }
 
     void Update()
@@ -48,17 +46,51 @@ public class Task_HUD : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Book.SetActive(!Book.activeSelf);
-            _animator.SetBool("isOpen", Book.activeSelf);
+            if (!Book.activeSelf)
+            {
+                // Opening the book
+                Book.SetActive(true);
+                _animator.SetBool("isOpen", true);
+                _animator.SetBool("isClose", false);
+                StartCoroutine(taskshow());
+            }
+            else
+            {
+                // Closing the book - start animation but delay hiding the object
+                _animator.SetBool("isOpen", false);
+                _animator.SetBool("isClose", true);
+                StartCoroutine(DelayedHideBook());
+                taskhide();
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.Q))
-        {
-            
-            Book.SetActive(false);
-            _animator.SetBool("isOpen", false);
-        }
- 
+    }
 
+    IEnumerator DelayedHideBook()
+    {
+        yield return new WaitForSeconds(0.8f);
+        Book.SetActive(false);
+    }
+
+    IEnumerator taskshow()
+    {
+        yield return new WaitForSeconds(1.2f);
+        Task1Text.enabled = true;
+        Task1image.enabled = true;
+        task2Text.enabled = true;
+        Task2image.enabled = true;
+        task3Text.enabled = true; 
+        Task3image.enabled = true;
+        
+    }
+
+    void taskhide()
+    {
+        Task1Text.enabled = false;
+        Task1image.enabled = false;
+        task2Text.enabled = false;
+        Task2image.enabled = false;
+        task3Text.enabled = false;
+        Task3image.enabled = false;
     }
 
     void enddoor()
@@ -76,10 +108,8 @@ public class Task_HUD : MonoBehaviour
         if (book.book > 0)
         {
             Task2image.color = Color.green;
-            bookPuzzleText.color = Color.green;
-            bookPuzzleText.text = "Book Collected";
-            shelfText.enabled = true;
-            Task3image.enabled = true;
+            task2Text.color = Color.green;
+            task2Text.text = "Book Collected";
         }
     }
 
@@ -87,8 +117,8 @@ public class Task_HUD : MonoBehaviour
     {
         if (shelf.shouldMove)
         {
-            shelfText.text = "Book Placed on Shelf";
-            shelfText.color = Color.green;
+            task3Text.text = "Book Placed on Shelf";
+            task3Text.color = Color.green;
             Task3image.color = Color.green;
         }
     }

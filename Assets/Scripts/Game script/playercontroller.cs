@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
         ps = GetComponentInChildren<ParticleSystem>();
 
 
+        
     }
     private void OnEnable()
     {
