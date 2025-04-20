@@ -8,27 +8,32 @@ using UnityEngine.UI;
 public class Task_HUD : MonoBehaviour
 {
     [Header("Player")]
-    [SerializeField] Transform Playertransfomation; 
-    
-    [Header("End Door")]
-    [SerializeField] TextMeshProUGUI endDoorText;
-    [SerializeField] RawImage endDoorimage; 
-    [SerializeField] Transform endDoor;
+    [SerializeField] Transform Playertransfomation;
+
+    [SerializeField] Animator taskanimator;
+    [Header("Task 1")]
+    [SerializeField] TextMeshProUGUI Task1Text;
+    [SerializeField] RawImage Task1image;
     [SerializeField] Shelf shelf;
-    
+
     [Header("book ")]
     [SerializeField] TextMeshProUGUI bookPuzzleText;
-    [SerializeField] RawImage RawImagebookPuzzle;
+    [SerializeField] RawImage Task2image;
     [SerializeField] Book book;
-    
+
     [Header("shelf")]
     [SerializeField] TextMeshProUGUI shelfText;
-    [SerializeField] RawImage RawImageshelf;
+    [SerializeField] RawImage Task3image;
+
+    [SerializeField] GameObject Book;
+
+    [SerializeField] private Animator _animator;
 
     void Start()
     {
         shelfText.enabled = false;
-        RawImageshelf.enabled = false;
+        Task3image.enabled = false;
+        Book.SetActive(false);
     }
 
     void Update()
@@ -36,15 +41,33 @@ public class Task_HUD : MonoBehaviour
         enddoor();
         bookpuzzle();
         shelfplace();
+        bookcanvas();
+    }
+
+    void bookcanvas()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Book.SetActive(!Book.activeSelf);
+            _animator.SetBool("isOpen", Book.activeSelf);
+        }
+        else if (Input.GetKeyDown(KeyCode.Q))
+        {
+            
+            Book.SetActive(false);
+            _animator.SetBool("isOpen", false);
+        }
+ 
+
     }
 
     void enddoor()
     {
         if (shelf.hasMoved)
         {
-            endDoorimage.color = Color.green;
-            endDoorText.text = "Found The End Door";
-            endDoorText.color = Color.green;
+            Task1image.color = Color.green;
+            Task1Text.text = "Found The End Door";
+            Task1Text.color = Color.green;
         }
     }
 
@@ -52,12 +75,11 @@ public class Task_HUD : MonoBehaviour
     {
         if (book.book > 0)
         {
-            RawImagebookPuzzle.color = Color.green;
+            Task2image.color = Color.green;
             bookPuzzleText.color = Color.green;
             bookPuzzleText.text = "Book Collected";
-            // shelf task enable after book collection
             shelfText.enabled = true;
-            RawImageshelf.enabled = true;
+            Task3image.enabled = true;
         }
     }
 
@@ -67,7 +89,7 @@ public class Task_HUD : MonoBehaviour
         {
             shelfText.text = "Book Placed on Shelf";
             shelfText.color = Color.green;
-            RawImageshelf.color = Color.green;
+            Task3image.color = Color.green;
         }
     }
 }

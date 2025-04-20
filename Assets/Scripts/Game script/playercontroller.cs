@@ -30,8 +30,6 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public TrailRenderer tr;
     public RealmShift realmShift;
-    [SerializeField] private PolygonCollider2D polygonCollider;
-    [SerializeField] private SpriteRenderer spriteRenderer;
     
     public ParticleSystem ps; 
     
@@ -45,8 +43,6 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        polygonCollider = GetComponent<PolygonCollider2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         playerInputActions = new PlayerInputActions();
         ps = GetComponentInChildren<ParticleSystem>();
 

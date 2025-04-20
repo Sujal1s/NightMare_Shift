@@ -77,16 +77,13 @@ public class RealmShift : MonoBehaviour
     {
         ToggleRealmShift();
 
-        // Wait until 1 second before the end
         yield return new WaitForSeconds(duration - 1f);
 
-        // Start flickering for the last second if still in realm shift
         if (isRealmShifted)
         {
             yield return StartCoroutine(FlickerWarning());
         }
 
-        // Ensure we return to normal state
         if (isRealmShifted)
         {
             ToggleRealmShift();
@@ -99,14 +96,12 @@ public class RealmShift : MonoBehaviour
 
     private IEnumerator FlickerWarning()
     {
-        float flickerInterval = 0.15f; // Adjust for faster/slower flickering
+        float flickerInterval = 0.15f; 
         float totalTime = 0f;
         bool isInNormalState = false;
 
-        // Flicker for 1 second
         while (totalTime < 1f)
         {
-            // Toggle between normal and shifted states
             if (isInNormalState)
             {
                 light.intensity = shiftedLightIntensity;
@@ -125,7 +120,6 @@ public class RealmShift : MonoBehaviour
             totalTime += flickerInterval;
         }
         
-        // Ensure we end in shifted state for consistency
         light.intensity = shiftedLightIntensity;
         spotlight.intensity = shiftedSpotlightIntensity;
         vignette.intensity.value = shiftedVignetteIntensity;
