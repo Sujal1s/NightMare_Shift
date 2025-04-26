@@ -305,29 +305,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e3ef8a4490f4bd49b199876ece34a42
+      spriteID: 8a13e34c6d452444c9499a3620a45d0d
       internalID: 15420578
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jump up-Sheet (1)_9
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 53fe306fe94189f40ae1181cdd43e74b
-      internalID: -961504070
       vertices: []
       indices: 
       edges: []
@@ -352,7 +331,6 @@ TextureImporter:
       jump up-Sheet (1)_6: 1897233182
       jump up-Sheet (1)_7: -1769551727
       jump up-Sheet (1)_8: 15420578
-      jump up-Sheet (1)_9: -961504070
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
