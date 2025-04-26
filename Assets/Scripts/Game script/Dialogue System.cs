@@ -15,6 +15,7 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] private string[] speaker;
     [SerializeField] private string[] dialougeWord;
     [SerializeField] private Sprite[] potrait;
+    internal bool isActive = false;
     private Animator animator;
 
 
@@ -67,6 +68,7 @@ public class DialogueSystem : MonoBehaviour
         {
             animator.SetTrigger("PlayReverse");
             dialougeactive = true;
+            isActive = true;
         }
     }
 
@@ -75,6 +77,7 @@ public class DialogueSystem : MonoBehaviour
         dialougeactive = false;
         dialboxcanvas.SetActive(false);
         animator.SetTrigger("PlayDisappear");
+        
     }
 
 
