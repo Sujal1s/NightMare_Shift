@@ -1,5 +1,23 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+public static class MenuManager
+{
+    public static string previousMenu = "MainMenu";
+
+    public static void LoadSceneAndRemember(string sceneName)
+    {
+        previousMenu = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public static void LoadPreviousScene()
+    {
+        SceneManager.LoadScene(previousMenu);
+    }
+}
 
 public class MainMenu : MonoBehaviour
 {
@@ -15,6 +33,7 @@ public class MainMenu : MonoBehaviour
 
         SceneManager.LoadScene("SettingMenu");
     }
+
 
     public void QuitGame()
     {
