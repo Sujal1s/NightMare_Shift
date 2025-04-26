@@ -1,21 +1,28 @@
+using System;
 using UnityEngine;
 
 public class Elevatortask : BaseTask
 {
-    [SerializeField] private Shelf shelf;
 
+    private bool issaw;
     private void Start()
     {
+        issaw = false;
         Initialize("check out the elevator");
     }
 
     public override bool CheckCompletionCondition()
     {
-        if (shelf.shouldMove)
+        if (issaw)
         {
-            taskText.text = "elevator Ride done";
+            taskText.text = "elevator Check out";
             return true;
         }
         return false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        issaw = true;
     }
 }

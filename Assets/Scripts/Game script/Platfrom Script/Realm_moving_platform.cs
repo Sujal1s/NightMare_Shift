@@ -43,4 +43,18 @@ public class Realm_moving_platform : MonoBehaviour
     {
         return realmShift != null && realmShift.isRealmShifted;
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.transform.SetParent(transform);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.transform.SetParent(null);
+        }
+    }
 }
