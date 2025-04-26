@@ -37732,7 +37732,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4971972280c7a8438d06ef0022809a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstPauseMenuButton: {fileID: 0}
 --- !u!4 &232150225
 Transform:
   m_ObjectHideFlags: 0
@@ -42575,11 +42574,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4593786980722145418, guid: 621a32e90ab26f945aa3186f62559b3d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 177.71
+      value: -18.9
       objectReference: {fileID: 0}
     - target: {fileID: 4593786980722145418, guid: 621a32e90ab26f945aa3186f62559b3d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.84
+      value: -3.71
       objectReference: {fileID: 0}
     - target: {fileID: 4593786980722145418, guid: 621a32e90ab26f945aa3186f62559b3d, type: 3}
       propertyPath: m_LocalPosition.z
