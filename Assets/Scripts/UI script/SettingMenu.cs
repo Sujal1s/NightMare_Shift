@@ -20,13 +20,9 @@ public class SettingMenu : MonoBehaviour
 
     private int currentResolutionIndex;
     private bool isInitialized = false;
-    private string previousScene;
 
     void Start()
     {
-        previousScene = PlayerPrefs.GetString("PreviousScene", "MainMenu"); // Load previous scene
-
-        // Initialize resolution settings
         resolutionDropDown.ClearOptions();
         List<string> resolutionOptions = new List<string>();
 
@@ -34,8 +30,7 @@ public class SettingMenu : MonoBehaviour
         {
             for (int i = 0; i < customResolutions.Length; i++)
             {
-                if (customResolutions[i].width == Screen.currentResolution.width &&
-                    customResolutions[i].height == Screen.currentResolution.height)
+                if (customResolutions[i].width == Screen.currentResolution.width && customResolutions[i].height == Screen.currentResolution.height)
                 {
                     currentResolutionIndex = i;
                     break;
@@ -123,17 +118,14 @@ public class SettingMenu : MonoBehaviour
     public void Back()
     {
         string lastScene = PlayerPrefs.GetString("PreviousScene", "MainMenu");
-        Debug.Log("Returning to: " + lastScene);
 
-        if (lastScene == "PauseMenu")
+        // Load the previous scene first in additive mode
+        if (lastScene != "SettingMenu")
         {
-            // Instead of reloading the scene, we simply return to the Pause Menu
-            SceneManager.UnloadSceneAsync("SettingMenu");
-            Time.timeScale = 0f; // Keep the game paused
+            SceneManager.LoadScene(lastScene, LoadSceneMode.Additive);
         }
-        else
-        {
-            SceneManager.LoadScene(lastScene);
-        }
+
+        // Unload SettingMenu after loading the previous scene
+        SceneManager.UnloadSceneAsync("SettingMenu");
     }
 }
