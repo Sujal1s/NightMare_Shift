@@ -38,7 +38,7 @@ Dev Gawande
 Shayaan Mulani
 
 — Special Thanks —  
-Shanu Mudgal
+Shanu Mudgal Sir
 
 ""Every end is a new beginning.""
 ";
