@@ -15,8 +15,12 @@ namespace Cainos.PixelArtPlatformer_Dungeon
         [FoldoutGroup("Reference")] public Rigidbody2D platform;
         [FoldoutGroup("Reference")] public SpriteRenderer chainL;
         [FoldoutGroup("Reference")] public SpriteRenderer chainR;
+        
+        
 
         [FoldoutGroup("Runtime"), ShowInInspector]
+        
+        
         public float Length
         {
             get { return length; }
@@ -82,6 +86,8 @@ namespace Cainos.PixelArtPlatformer_Dungeon
             targetLength = Length;
 
             secondOrderDynamics.Reset(targetLength);
+            
+            
         }
 
         private void Update()
@@ -142,4 +148,5 @@ namespace Cainos.PixelArtPlatformer_Dungeon
             Down
         }
     }
+    
 }
