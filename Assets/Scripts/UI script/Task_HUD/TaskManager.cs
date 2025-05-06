@@ -22,7 +22,6 @@ public class TaskManager : MonoBehaviour
     {
         foreach (var task in tasks)
         {
-            // Apply initial settings based on dependencies
             bool shouldBeActive = true;
             foreach (var dependency in taskDependencies)
             {
