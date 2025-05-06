@@ -1,15 +1,15 @@
 using UnityEngine;
 using TMPro;
 
-public class PoneglyphReader : MonoBehaviour
+public class ancient_murals : MonoBehaviour
 {
-    public GameObject promptUI;                // "Press Y" prompt
-    public GameObject dialogueBoxUI;           // Dialogue box panel
-    public TMP_Text dialogueTextUI;            // TextMeshPro text component
-    public string[] dialogueLines;             // Array of dialogue lines
+    [SerializeField] GameObject promptUI;                // "Press Y" prompt
+    [SerializeField] GameObject dialogueBoxUI;           // Dialogue box panel
+    [SerializeField] TMP_Text dialogueTextUI;            // TextMeshPro text component
+    [SerializeField] string[] dialogueLines;             // Array of dialogue lines
 
     private int currentIndex = 0;
-    private bool isNear = false;
+    internal bool isNear = false;       
     private bool isReading = false;
 
     void Start()
