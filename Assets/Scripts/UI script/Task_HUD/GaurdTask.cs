@@ -18,7 +18,7 @@ public class GaurdTask : BaseTask
 
     public override bool CheckCompletionCondition()
     {
-        if (DS.isActive)
+        if (DS.dialogueActive)
         {
             taskText.text = "Gaurd Met";
             return true;
