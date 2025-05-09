@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+
 public static class MenuManager
 {
     public static string previousMenu = "MainMenu";
