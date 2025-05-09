@@ -1,84 +1,108 @@
-using System;
-using System.Collections;
-using TMPro;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class DialogueSystem : MonoBehaviour
 {
-    public GameObject dialboxcanvas;
-    [SerializeField] private GameObject player;
-    [SerializeField] private TextMeshProUGUI speakertext;
-    [SerializeField] private TextMeshProUGUI dialougeText;
-    [SerializeField] private Image potraiteImage;
+    [Header("UI References")]
+    public GameObject dialboxCanvas;
+    [SerializeField] private TextMeshProUGUI speakerText;
+    [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private Image portraitImage;
 
-    [SerializeField] private string[] speaker;
-    [SerializeField] private string[] dialougeWord;
-    [SerializeField] private Sprite[] potrait;
-    internal bool isActive = false;
-    private Animator animator;
+    [Header("Dialogue Data")]
+    [SerializeField] private string[] speakers;
+    [SerializeField] private string[] dialogueLines;
+    [SerializeField] private Sprite[] portraits;
 
+    [Header("Player")]
+    [SerializeField] private Animator playerAnimator;
+    [SerializeField] private ParticleSystem playerParticle;
 
-    public int step;
-    private bool dialougeactive;
+    private PlayerController playerController;
+    private Animator anim;
+    
+    internal bool dialogueActive = false;
+    private int step = 0;
+
+    public int EnableAtStep = 6;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
-        
+        anim = GetComponent<Animator>();
+
+        var playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+            playerController = playerObj.GetComponent<PlayerController>();
+        else
+            Debug.LogWarning("[DialogueSystem] No GameObject with tag 'Player' found.");
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.JoystickButton3)&& dialougeactive || Input.GetKeyDown(KeyCode.E) && dialougeactive)
+        if (!dialogueActive) return;
+
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton3))
         {
-            if (step >= speaker.Length)
+            if (step >= speakers.Length || step >= dialogueLines.Length)
             {
-                dialboxcanvas.SetActive(false);
-                
+                CloseDialogue();
                 return;
             }
-            else
-            {
-                dialboxcanvas.SetActive(true);
-                speakertext.text = speaker[step];
-                dialougeText.text = dialougeWord[step];
-                potraiteImage.sprite = potrait[step];
-                step += 1;
-            }
+
+            ShowLine(step);
+            step++;
         }
 
-        if ( step > 6 )
+        if (step >= EnableAtStep && playerController != null && !playerController.enabled)
         {
-            PlayerController playerScript = player.GetComponent<PlayerController>();
-            if (playerScript != null)
-            {
-                playerScript.enabled = !playerScript.enabled;
-            }
-            else
-            {
-                
-            }
+            playerController.enabled = true;
+            if (playerAnimator != null)
+                playerAnimator.SetBool("_ismoving", false);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (!col.CompareTag("Player")) return;
+
+        dialogueActive = true;
+        step = 0;
+        anim?.SetTrigger("PlayReverse");
+
+        if (playerController != null)
         {
-            animator.SetTrigger("PlayReverse");
-            dialougeactive = true;
-            isActive = true;
+            playerController.enabled = false;
+            if (playerAnimator != null)
+                playerAnimator.SetBool("_ismoving", false);
+            playerParticle.Stop();
         }
+
+        ShowLine(step);
+        step++;
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D col)
     {
-        dialougeactive = false;
-        dialboxcanvas.SetActive(false);
-        animator.SetTrigger("PlayDisappear");
-        
+        if (!col.CompareTag("Player")) return;
+        CloseDialogue();
     }
 
+    private void ShowLine(int index)
+    {
+        if (dialboxCanvas != null)
+            dialboxCanvas.SetActive(true);
 
+        speakerText.text  = (index < speakers.Length)      ? speakers[index]     : "";
+        dialogueText.text = (index < dialogueLines.Length) ? dialogueLines[index] : "";
+        portraitImage.sprite = (index < portraits.Length) ? portraits[index] : null;
+    }
+
+    private void CloseDialogue()
+    {
+        dialogueActive = false;
+        if (dialboxCanvas != null)
+            dialboxCanvas.SetActive(false);
+        anim?.SetTrigger("PlayDisappear");
+    }
 }

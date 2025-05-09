@@ -120,35 +120,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f32e3206bb161a648b676c0a3470b435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialboxcanvas: {fileID: 0}
-  speakertext: {fileID: 0}
-  dialougeText: {fileID: 0}
-  potraiteImage: {fileID: 0}
-  speaker:
+  dialboxCanvas: {fileID: 0}
+  speakerText: {fileID: 0}
+  dialogueText: {fileID: 0}
+  portraitImage: {fileID: 0}
+  speakers:
   - Old Man
-  - Boy
-  - Old Man
-  - Boy
-  - Old Man
-  - Boy
-  dialougeWord:
-  - So at last, you came here.
-  - 'Hey, who are you and why am I here? '
-  - 'You are here because destiny has led you to this place. '
-  - 'Huh? So what? I want to wake up why can''t I? '
-  - "You cannot wake until He wills it. Listen well: \u2003\u2003Follow the gleam
-    of sapphire light, \u2003\u2003Where blue touches lead your way. \u2003\u2003In
-    His realm, each step is fraught with might  \u2003\u2003The chosen one must not
-    betray. \u2003\u2003Tread with care on shadowed ground, \u2003\u2003For fate
-    awaits where secrets abound."
-  - Wait what did you just say? I need answers!
-  potrait:
+  - Leo
+  - Old man
+  - Leo
+  - Old man
+  - Leo
+  - Old man
+  - Old man
+  dialogueLines:
+  - Welcome, child. You have wandered far into the domain of dreams and nightmares.
+  - Who... who are you? Why can't I remember how I got here?
+  - I am the Dungeon Guard, sentinel of this forgotten realm. You carry a sleeping
+    power within you. Press the Left Button now to awaken it.
+  - 'I pressed it... I feel something stirring, like a warm light in the darkness. '
+  - 'Good. You hold the Realm-Shifting gift now. Use it wisely: there are secrets
+    hidden in plain sight, and only your power can unveil them.'
+  - 'Secrets? Hidden? I-I don''t understand... '
+  - 'Trust your curiosity, Leo. The path ahead will test you. '
+  - 'Shadows and light are both truth and illusion. Now, go forth and find the door
+    that was cloaked to mortal eyes. '
+  portraits:
   - {fileID: 21300000, guid: 72b27d6767af3d24993bd6a59f99be78, type: 3}
   - {fileID: 21300000, guid: 4e9d4e1b07fdc7048a84fe5bbfbc693f, type: 3}
   - {fileID: 21300000, guid: 72b27d6767af3d24993bd6a59f99be78, type: 3}
   - {fileID: 21300000, guid: 4e9d4e1b07fdc7048a84fe5bbfbc693f, type: 3}
   - {fileID: 21300000, guid: 72b27d6767af3d24993bd6a59f99be78, type: 3}
   - {fileID: 21300000, guid: 4e9d4e1b07fdc7048a84fe5bbfbc693f, type: 3}
+  - {fileID: 21300000, guid: 72b27d6767af3d24993bd6a59f99be78, type: 3}
+  - {fileID: 21300000, guid: 72b27d6767af3d24993bd6a59f99be78, type: 3}
+  playerAnimator: {fileID: 0}
+  playerParticle: {fileID: 0}
 --- !u!61 &2142343191335702492
 BoxCollider2D:
   m_ObjectHideFlags: 0
