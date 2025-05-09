@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -10,6 +10,7 @@ public class SettingMenu : MonoBehaviour
     public Dropdown resolutionDropDown;
     public Dropdown qualityDropdown;
     public Toggle fullscreenToggle;
+    public Toggle soundToggle;
 
     private Resolution[] customResolutions = new Resolution[]
     {
@@ -66,6 +67,12 @@ public class SettingMenu : MonoBehaviour
         qualityDropdown.value = savedQuality;
         qualityDropdown.onValueChanged.AddListener(SetQuality);
 
+        bool soundOn = PlayerPrefs.GetInt("SoundOn", 1) == 1;
+        soundToggle.isOn = soundOn;
+        soundToggle.onValueChanged.AddListener(SetSoundToggle);
+
+        ApplySoundState(soundOn);
+
         SetResolution(currentResolutionIndex);
         SetQuality(savedQuality);
 
@@ -107,25 +114,32 @@ public class SettingMenu : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    public void SetVolume(float volume)
+    public void SetSoundToggle(bool isOn)
     {
-        if (audioMixer != null)
+        PlayerPrefs.SetInt("SoundOn", isOn ? 1 : 0);
+        PlayerPrefs.Save();
+        ApplySoundState(isOn);
+    }
+
+    private void ApplySoundState(bool isSoundOn)
+    {
+        if (isSoundOn)
         {
-            audioMixer.SetFloat("volume", volume);
+            audioMixer.SetFloat("volume", 0);
+        }
+        else
+        {
+            audioMixer.SetFloat("volume", -80f);
         }
     }
 
     public void Back()
     {
         string lastScene = PlayerPrefs.GetString("PreviousScene", "MainMenu");
-
-        // Load the previous scene first in additive mode
         if (lastScene != "SettingMenu")
         {
             SceneManager.LoadScene(lastScene, LoadSceneMode.Additive);
         }
-
-        // Unload SettingMenu after loading the previous scene
         SceneManager.UnloadSceneAsync("SettingMenu");
     }
 }

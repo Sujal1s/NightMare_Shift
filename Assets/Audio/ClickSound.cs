@@ -1,22 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ClickSound : MonoBehaviour
 {
-    public AudioSource soundPlayer;
-    void Start()
-    {
-        
-    }
+    public AudioSource audioSource;  
+    public AudioClip clickClip;     
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void PlayThisSoundEffect()
     {
-        soundPlayer.Play();
+        if (audioSource != null && clickClip != null)
+        {
+            audioSource.PlayOneShot(clickClip);
+        }
+        else
+        {
+            Debug.LogError("AudioSource or AudioClip is not assigned!");
+        }
     }
 }
