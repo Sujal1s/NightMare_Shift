@@ -38164,6 +38164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4971972280c7a8438d06ef0022809a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!4 &232150225
 Transform:
   m_ObjectHideFlags: 0
@@ -42063,6 +42064,14 @@ PrefabInstance:
     - target: {fileID: 695772227148662600, guid: e5fb1b7397f35fa43a95ef8b7ab377a1, type: 3}
       propertyPath: m_Name
       value: small candles_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016594154645854596, guid: e5fb1b7397f35fa43a95ef8b7ab377a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.287
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016594154645854596, guid: e5fb1b7397f35fa43a95ef8b7ab377a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.198
       objectReference: {fileID: 0}
     - target: {fileID: 2485510464942618438, guid: e5fb1b7397f35fa43a95ef8b7ab377a1, type: 3}
       propertyPath: m_LocalPosition.x
