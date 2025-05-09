@@ -11,37 +11,17 @@ public class TMPEndCredits : MonoBehaviour
     public string mainMenuSceneName = "MainMenu";
     public float skipTextDelay = 3f;
     public float fadeDuration = 1.5f;
+    public string text;
 
     private float endY;
     private bool isEnding = false;
     private float skipTextTimer = 0f;
     private bool skipFadeInComplete = false;
+    
 
     void Start()
     {
-        tmpText.text = @"
-THANK YOU FOR PLAYING!
-
-Nightmare Shift 
-By Team Realm Runners
-
-— Game Design —  
-Sujal Pachpande 
-Dev Gawande 
-
-— Programming —  
- Sujal Pachpande
-Dhwanyarth Angre
-
-— Art & Animation —  
-Dev Gawande
-Shayaan Mulani
-
-— Special Thanks —  
-Shanu Mudgal
-
-""Every end is a new beginning.""
-";
+        tmpText.text = text;
 
 
         if (skipText != null)

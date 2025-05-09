@@ -651,6 +651,11 @@ MonoBehaviour:
   mainMenuSceneName: MainMenu
   skipTextDelay: 3
   fadeDuration: 1.5
+  text: "THANK YOU FOR PLAYING!<br> Nightmare Shift<br> By Team Realm Runners<br><br> 
+    \u2014 Game Design \u2014<br> Sujal Pachpande<br> Dev Gawande<br><br>  \u2014
+    Programming \u2014<br> Sujal Pachpande<br> Dhwanyarth Angre<br><br>  \u2014 Art
+    & Animation \u2014<br> Dev Gawande<br> Shayaan Mulani<br><br>  \u2014 Special
+    Thanks \u2014<br> Shanu Mudgal<br><br>  \"Every end is a new beginning.\" "
 --- !u!1 &1718996344
 GameObject:
   m_ObjectHideFlags: 0
