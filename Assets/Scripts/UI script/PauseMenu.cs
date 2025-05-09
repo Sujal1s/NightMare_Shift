@@ -1,13 +1,25 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
+    public GameObject player;
+
+    private PlayerInput playerInput;
+
+    void Start()
+    {
+        if (player != null)
+        {
+            playerInput = player.GetComponent<PlayerInput>();
+        }
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Start"))
+        if (Keyboard.current.escapeKey.wasPressedThisFrame || Gamepad.current?.startButton.wasPressedThisFrame == true)
         {
             if (GameIsPaused)
                 Resume();
@@ -21,6 +33,9 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
 
+        if (playerInput != null)
+            playerInput.enabled = true;
+
         if (SceneManager.GetSceneByName("PauseMenu").isLoaded)
             SceneManager.UnloadSceneAsync("PauseMenu");
     }
@@ -29,6 +44,9 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 0f;
         GameIsPaused = true;
+
+        if (playerInput != null)
+            playerInput.enabled = false;
 
         if (!SceneManager.GetSceneByName("PauseMenu").isLoaded)
             SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
