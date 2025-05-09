@@ -7,13 +7,22 @@ using UnityEngine.SceneManagement;
 public class Scenetranstion : MonoBehaviour
 {
 
-
-    private void OnTriggerEnter2D(Collider2D other)
+    void Start()
     {
-        if (other.CompareTag("Player"))
-        {
-            SceneManager.LoadScene("Level_2.3");
-        }
-      
+        _ani = GetComponent<Animator>();
     }
+      public string Scenename;
+      [SerializeField] private Animator _ani;
+
+   public   void fadein()
+      {
+          if (CompareTag("Player"))
+          {
+              SceneManager.LoadScene(Scenename);
+          }
+          _ani.SetBool("isfade", true);
+      }
+      
+      
+    
 }

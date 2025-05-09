@@ -11,7 +11,7 @@ using UnityEditor.SceneManagement;
 
 namespace Cainos.PixelArtPlatformer_Dungeon
 {
-    public class end_door : MonoBehaviour // this is the end door that change the Scene
+    public class end_door : Scenetranstion // this is the end door that change the Scene
     {
       public SpriteRenderer spriteRenderer;
       public Sprite spriteOpened; 
@@ -85,7 +85,8 @@ namespace Cainos.PixelArtPlatformer_Dungeon
             if ( other.CompareTag("Player") && shelf.hasMoved)
             {
                 Open();
-                StartCoroutine(ChangeSceneAfterDelay(1f));
+                fadein();
+                StartCoroutine(ChangeSceneAfterDelay(2f));
             }
   
            
