@@ -10,6 +10,7 @@ public class SettingMenu : MonoBehaviour
     public Dropdown resolutionDropDown;
     public Dropdown qualityDropdown;
     public Toggle fullscreenToggle;
+    public Toggle soundToggle;
 
     private Resolution[] customResolutions = new Resolution[]
     {
@@ -30,7 +31,8 @@ public class SettingMenu : MonoBehaviour
         {
             for (int i = 0; i < customResolutions.Length; i++)
             {
-                if (customResolutions[i].width == Screen.currentResolution.width && customResolutions[i].height == Screen.currentResolution.height)
+                if (customResolutions[i].width == Screen.currentResolution.width &&
+                    customResolutions[i].height == Screen.currentResolution.height)
                 {
                     currentResolutionIndex = i;
                     break;
@@ -65,6 +67,11 @@ public class SettingMenu : MonoBehaviour
         int savedQuality = PlayerPrefs.GetInt("GraphicsQuality", QualitySettings.GetQualityLevel());
         qualityDropdown.value = savedQuality;
         qualityDropdown.onValueChanged.AddListener(SetQuality);
+
+        bool soundOn = PlayerPrefs.GetInt("SoundOn", 1) == 1;
+        soundToggle.isOn = soundOn;
+        soundToggle.onValueChanged.AddListener(SetSoundToggle);
+        ApplySoundState(soundOn);
 
         SetResolution(currentResolutionIndex);
         SetQuality(savedQuality);
@@ -107,25 +114,28 @@ public class SettingMenu : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    public void SetVolume(float volume)
+    public void SetSoundToggle(bool isOn)
+    {
+        PlayerPrefs.SetInt("SoundOn", isOn ? 1 : 0);
+        PlayerPrefs.Save();
+        ApplySoundState(isOn);
+    }
+
+    private void ApplySoundState(bool isSoundOn)
     {
         if (audioMixer != null)
         {
-            audioMixer.SetFloat("volume", volume);
+            audioMixer.SetFloat("volume", isSoundOn ? 0f : -80f);
         }
     }
 
     public void Back()
     {
         string lastScene = PlayerPrefs.GetString("PreviousScene", "MainMenu");
-
-        // Load the previous scene first in additive mode
         if (lastScene != "SettingMenu")
         {
             SceneManager.LoadScene(lastScene, LoadSceneMode.Additive);
         }
-
-        // Unload SettingMenu after loading the previous scene
         SceneManager.UnloadSceneAsync("SettingMenu");
     }
 }
