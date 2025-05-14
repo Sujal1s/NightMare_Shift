@@ -512,15 +512,26 @@ MonoBehaviour:
   creditsText: {fileID: 1718996345}
   tmpText: {fileID: 1718996346}
   skipText: {fileID: 0}
-  scrollSpeed: 100
-  mainMenuSceneName: MainMenu
+  scrollSpeed: 50
+  mainMenuSceneName: Level_1
   skipTextDelay: 3
   fadeDuration: 1.5
-  text: "THANK YOU FOR PLAYING!<br> Nightmare Shift<br> By Team Realm Runners<br><br> 
-    \u2014 Game Design \u2014<br> Sujal Pachpande<br> Dev Gawande<br><br>  \u2014
-    Programming \u2014<br> Sujal Pachpande<br> Dhwanyarth Angre<br><br>  \u2014 Art
-    & Animation \u2014<br> Dev Gawande<br> Shayaan Mulani<br><br>  \u2014 Special
-    Thanks \u2014<br> Shanu Mudgal<br><br>  \"Every end is a new beginning.\" "
+  text: "Mom:<br>You look a little off today, Leo.<br>Everything alright at school?<br><br> 
+    Leo:<br>Yeah\u2026 I guess.<br>I was just playing with the guys during recess\u2026
+    I slipped.<br>Hit the ground.<br><br>  Mom:<br>Oh no!<br>Did you get hurt?<br><br> 
+    Leo:<br>Nah, I think I blacked out for a second\u2026<br>but it felt like forever.<br>Like
+    I was stuck in this weird, creepy place.<br><br>  Mom:<br>A nightmare?<br><br> 
+    Leo:<br>I don\u2019t know\u2026<br>it felt real.<br>There were torches\u2026
+    walls that moved\u2026 and this huge dungeon.<br>I could hear whispers.<br>See
+    shadows.<br>And then this\u2026 thing \u2014 a guard, I think \u2014 showed up.<br><br> 
+    Mom:<br>A guard?<br><br>  Leo:<br>Yeah.<br>He didn\u2019t tell me who he was,
+    but\u2026 he gave me something.<br>A power.<br>Said I could shift between worlds
+    \u2014 like flipping a switch.<br><br>  Mom:<br>That sounds intense for a dream.<br><br> 
+    Leo:<br>It was more than that, Mom.<br>The dungeon wasn\u2019t just scary\u2026<br>it
+    wanted me to find something.<br>Like I was chosen for a reason.<br><br>  Mom:<br>Maybe
+    your mind\u2019s just telling you something.<br>Dreams have a funny way of doing
+    that.<br><br>  Leo:<br>Maybe\u2026<br>But if it was just a dream\u2026<br>why
+    can I still feel it? "
 --- !u!1 &1718996344
 GameObject:
   m_ObjectHideFlags: 0

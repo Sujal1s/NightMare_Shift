@@ -82,7 +82,7 @@ namespace Cainos.PixelArtPlatformer_Dungeon
         private void OnTriggerEnter2D(Collider2D other)
         {
             Debug.Log("enter");
-            if ( other.CompareTag("Player") && shelf.hasMoved)
+            if ( other.CompareTag("Player") && ( shelf == null || shelf.hasMoved ))
             {
                 Open();
                 fadein();
